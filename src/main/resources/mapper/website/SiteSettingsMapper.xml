@@ -3,7 +3,7 @@
 <mapper namespace="com.practice.ningbao.mapper.website.SiteSettingsMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.website.SiteSettings">
+    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.website.SiteSettingsEntity">
         <id column="id" property="id" />
         <result column="site_name" property="siteName" />
         <result column="site_logo" property="siteLogo" />

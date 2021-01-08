@@ -1,4 +1,4 @@
-package com.practice.ningbao.entity.product;
+package com.practice.ningbao.entity.company;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
@@ -25,18 +25,22 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="ProductIntroductionDirectory对象", description="")
-public class ProductIntroductionDirectory implements Serializable {
+@ApiModel(value="CompanyOverviewContent对象", description="")
+public class CompanyOverviewContentEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    @ApiModelProperty(value = "产品介绍目录ID")
-    @TableId(value = "directory_id", type = IdType.AUTO)
-    private Integer directoryId;
+    @ApiModelProperty(value = "公司概况内容ID")
+    @TableId(value = "content_id", type = IdType.AUTO)
+    private Integer contentId;
 
-    @ApiModelProperty(value = "目录名称")
-    @TableField("directory_name")
-    private String directoryName;
+    @ApiModelProperty(value = "内容")
+    @TableField("content")
+    private String content;
+
+    @ApiModelProperty(value = "所属目录ID")
+    @TableField("owned_directory")
+    private Integer ownedDirectory;
 
     @ApiModelProperty(value = "乐观锁")
     @TableField("version")

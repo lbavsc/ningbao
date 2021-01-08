@@ -3,7 +3,7 @@
 <mapper namespace="com.practice.ningbao.mapper.user.TokenMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.user.Token">
+    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.user.TokenEntity">
         <id column="user_id" property="userId" />
         <result column="token" property="token" />
         <result column="expire_time" property="expireTime" />

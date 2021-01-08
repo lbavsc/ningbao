@@ -1,9 +1,7 @@
 package com.practice.ningbao.controller.user;
 
 
-import com.practice.ningbao.entity.user.User;
-import com.practice.ningbao.service.user.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.practice.ningbao.entity.user.UserEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @GetMapping("/login")
-    public User login(){
-        User user = new User();
+    public UserEntity login(){
+        UserEntity user = new UserEntity();
         user.setId(32);
         user.setName("wef");
         return user;

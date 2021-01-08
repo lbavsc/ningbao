@@ -1,6 +1,6 @@
 package com.practice.ningbao.service.product;
 
-import com.practice.ningbao.entity.product.ProductIntroductionDirectory;
+import com.practice.ningbao.entity.product.ProductIntroductionDirectoryEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author lbavsc
  * @since 2021-01-08
  */
-public interface ProductIntroductionDirectoryService extends IService<ProductIntroductionDirectory> {
+public interface ProductIntroductionDirectoryService extends IService<ProductIntroductionDirectoryEntity> {
 
 }

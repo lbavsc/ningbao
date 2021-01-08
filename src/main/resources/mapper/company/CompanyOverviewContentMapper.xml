@@ -3,7 +3,7 @@
 <mapper namespace="com.practice.ningbao.mapper.company.CompanyOverviewContentMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.company.CompanyOverviewContent">
+    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.company.CompanyOverviewContentEntity">
         <id column="content_id" property="contentId" />
         <result column="content" property="content" />
         <result column="owned_directory" property="ownedDirectory" />

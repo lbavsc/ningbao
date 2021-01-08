@@ -1,6 +1,6 @@
 package com.practice.ningbao.service.contact;
 
-import com.practice.ningbao.entity.contact.ConntactUs;
+import com.practice.ningbao.entity.contact.ConntactUsEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author lbavsc
  * @since 2021-01-08
  */
-public interface ConntactUsService extends IService<ConntactUs> {
+public interface ConntactUsService extends IService<ConntactUsEntity> {
 
 }

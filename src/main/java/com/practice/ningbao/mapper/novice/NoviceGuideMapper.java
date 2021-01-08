@@ -1,6 +1,6 @@
 package com.practice.ningbao.mapper.novice;
 
-import com.practice.ningbao.entity.novice.NoviceGuide;
+import com.practice.ningbao.entity.novice.NoviceGuideEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2021-01-08
  */
 @Mapper
-public interface NoviceGuideMapper extends BaseMapper<NoviceGuide> {
+public interface NoviceGuideMapper extends BaseMapper<NoviceGuideEntity> {
 
 }

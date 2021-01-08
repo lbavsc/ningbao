@@ -1,6 +1,6 @@
 package com.practice.ningbao.service.user.impl;
 
-import com.practice.ningbao.entity.user.Token;
+import com.practice.ningbao.entity.user.TokenEntity;
 import com.practice.ningbao.mapper.user.TokenMapper;
 import com.practice.ningbao.service.user.TokenService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2021-01-08
  */
 @Service
-public class TokenServiceImpl extends ServiceImpl<TokenMapper, Token> implements TokenService {
+public class TokenServiceImpl extends ServiceImpl<TokenMapper, TokenEntity> implements TokenService {
 
 }

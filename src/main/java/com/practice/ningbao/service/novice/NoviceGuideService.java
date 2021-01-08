@@ -1,6 +1,6 @@
 package com.practice.ningbao.service.novice;
 
-import com.practice.ningbao.entity.novice.NoviceGuide;
+import com.practice.ningbao.entity.novice.NoviceGuideEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author lbavsc
  * @since 2021-01-08
  */
-public interface NoviceGuideService extends IService<NoviceGuide> {
+public interface NoviceGuideService extends IService<NoviceGuideEntity> {
 
 }

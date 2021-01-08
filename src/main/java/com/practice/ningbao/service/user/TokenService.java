@@ -1,6 +1,6 @@
 package com.practice.ningbao.service.user;
 
-import com.practice.ningbao.entity.user.Token;
+import com.practice.ningbao.entity.user.TokenEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author lbavsc
  * @since 2021-01-08
  */
-public interface TokenService extends IService<Token> {
+public interface TokenService extends IService<TokenEntity> {
 
 }

@@ -1,4 +1,4 @@
-package com.practice.ningbao.entity.company;
+package com.practice.ningbao.entity.news;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
@@ -25,18 +25,30 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="CompanyOverviewDirectory对象", description="")
-public class CompanyOverviewDirectory implements Serializable {
+@ApiModel(value="News对象", description="")
+public class NewsEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    @ApiModelProperty(value = "公司概况目录ID")
-    @TableId(value = "directory_id", type = IdType.AUTO)
-    private Integer directoryId;
+    @ApiModelProperty(value = "新闻ID")
+    @TableId(value = "news_id", type = IdType.AUTO)
+    private Integer newsId;
 
-    @ApiModelProperty(value = "目录名称")
-    @TableField("directory_name")
-    private String directoryName;
+    @ApiModelProperty(value = "新闻标题")
+    @TableField("title")
+    private String title;
+
+    @ApiModelProperty(value = "新闻原标题")
+    @TableField("original_title")
+    private String originalTitle;
+
+    @ApiModelProperty(value = "新闻内容")
+    @TableField("content")
+    private String content;
+
+    @ApiModelProperty(value = "新闻类型 0.公司新闻 1.集团新闻")
+    @TableField("news_type")
+    private Integer newsType;
 
     @ApiModelProperty(value = "乐观锁")
     @TableField("version")

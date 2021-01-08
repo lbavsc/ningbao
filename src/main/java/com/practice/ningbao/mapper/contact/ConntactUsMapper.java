@@ -1,6 +1,6 @@
 package com.practice.ningbao.mapper.contact;
 
-import com.practice.ningbao.entity.contact.ConntactUs;
+import com.practice.ningbao.entity.contact.ConntactUsEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2021-01-08
  */
 @Mapper
-public interface ConntactUsMapper extends BaseMapper<ConntactUs> {
+public interface ConntactUsMapper extends BaseMapper<ConntactUsEntity> {
 
 }

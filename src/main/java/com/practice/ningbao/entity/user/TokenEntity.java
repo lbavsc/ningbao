@@ -1,6 +1,7 @@
-package com.practice.ningbao.entity.website;
+package com.practice.ningbao.entity.user;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import java.util.Date;
 import com.baomidou.mybatisplus.annotation.Version;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -22,18 +23,26 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="CarouselNews对象", description="")
-public class CarouselNews implements Serializable {
+@ApiModel(value="Token对象", description="")
+public class TokenEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    @ApiModelProperty(value = "轮播新闻ID")
-    @TableId(value = "news_id", type = IdType.ID_WORKER)
-    private Integer newsId;
+    @ApiModelProperty(value = "用户ID")
+    @TableId(value = "user_id", type = IdType.ID_WORKER)
+    private Integer userId;
 
-    @ApiModelProperty(value = "轮播新闻链接")
-    @TableField("news_link")
-    private String newsLink;
+    @ApiModelProperty(value = "用户token")
+    @TableField("token")
+    private String token;
+
+    @ApiModelProperty(value = "过期时间")
+    @TableField("expire_time")
+    private Date expireTime;
+
+    @ApiModelProperty(value = "更新时间")
+    @TableField("update_time")
+    private Date updateTime;
 
 
 }

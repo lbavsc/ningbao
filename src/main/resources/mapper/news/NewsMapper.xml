@@ -3,7 +3,7 @@
 <mapper namespace="com.practice.ningbao.mapper.news.NewsMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.news.News">
+    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.news.NewsEntity">
         <id column="news_id" property="newsId" />
         <result column="title" property="title" />
         <result column="original_title" property="originalTitle" />

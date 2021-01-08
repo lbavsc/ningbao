@@ -3,7 +3,7 @@
 <mapper namespace="com.practice.ningbao.mapper.user.UserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.user.User">
+    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.user.UserEntity">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="password" property="password" />

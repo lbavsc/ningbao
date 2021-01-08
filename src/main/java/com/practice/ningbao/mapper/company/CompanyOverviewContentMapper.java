@@ -1,6 +1,6 @@
 package com.practice.ningbao.mapper.company;
 
-import com.practice.ningbao.entity.company.CompanyOverviewContent;
+import com.practice.ningbao.entity.company.CompanyOverviewContentEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2021-01-08
  */
 @Mapper
-public interface CompanyOverviewContentMapper extends BaseMapper<CompanyOverviewContent> {
+public interface CompanyOverviewContentMapper extends BaseMapper<CompanyOverviewContentEntity> {
 
 }

@@ -3,7 +3,7 @@
 <mapper namespace="com.practice.ningbao.mapper.website.CarouselPicMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.website.CarouselPic">
+    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.website.CarouselPicEntity">
         <id column="pic_id" property="picId" />
         <result column="pic_link" property="picLink" />
     </resultMap>

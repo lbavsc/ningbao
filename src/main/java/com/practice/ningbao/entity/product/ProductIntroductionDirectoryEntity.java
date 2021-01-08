@@ -1,4 +1,4 @@
-package com.practice.ningbao.entity.user;
+package com.practice.ningbao.entity.product;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
@@ -12,7 +12,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
@@ -26,31 +25,18 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="User对象", description="")
-@ToString
-public class User implements Serializable {
+@ApiModel(value="ProductIntroductionDirectory对象", description="")
+public class ProductIntroductionDirectoryEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    @ApiModelProperty(value = "用户ID")
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @ApiModelProperty(value = "产品介绍目录ID")
+    @TableId(value = "directory_id", type = IdType.AUTO)
+    private Integer directoryId;
 
-    @ApiModelProperty(value = "用户名称")
-    @TableField("name")
-    private String name;
-
-    @ApiModelProperty(value = "用户密码")
-    @TableField("password")
-    private String password;
-
-    @ApiModelProperty(value = "用户类型 0.管理员 1.企业用户, 2.供应商")
-    @TableField("user_type")
-    private Integer userType;
-
-    @ApiModelProperty(value = "用户状态 0.正常 1.被封禁")
-    @TableField("user_status")
-    private Integer userStatus;
+    @ApiModelProperty(value = "目录名称")
+    @TableField("directory_name")
+    private String directoryName;
 
     @ApiModelProperty(value = "乐观锁")
     @TableField("version")

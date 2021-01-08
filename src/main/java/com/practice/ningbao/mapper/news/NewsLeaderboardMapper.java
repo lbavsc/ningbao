@@ -1,6 +1,6 @@
 package com.practice.ningbao.mapper.news;
 
-import com.practice.ningbao.entity.news.NewsLeaderboard;
+import com.practice.ningbao.entity.news.NewsLeaderboardEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2021-01-08
  */
 @Mapper
-public interface NewsLeaderboardMapper extends BaseMapper<NewsLeaderboard> {
+public interface NewsLeaderboardMapper extends BaseMapper<NewsLeaderboardEntity> {
 
 }

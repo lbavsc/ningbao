@@ -3,7 +3,7 @@
 <mapper namespace="com.practice.ningbao.mapper.novice.NoviceGuideMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.novice.NoviceGuide">
+    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.novice.NoviceGuideEntity">
         <id column="novice_guide_id" property="noviceGuideId" />
         <result column="img" property="img" />
         <result column="content" property="content" />

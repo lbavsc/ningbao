@@ -1,6 +1,6 @@
 package com.practice.ningbao.mapper.website;
 
-import com.practice.ningbao.entity.website.CarouselPic;
+import com.practice.ningbao.entity.website.CarouselPicEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2021-01-08
  */
 @Mapper
-public interface CarouselPicMapper extends BaseMapper<CarouselPic> {
+public interface CarouselPicMapper extends BaseMapper<CarouselPicEntity> {
 
 }

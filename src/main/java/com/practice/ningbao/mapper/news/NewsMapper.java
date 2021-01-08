@@ -1,6 +1,6 @@
 package com.practice.ningbao.mapper.news;
 
-import com.practice.ningbao.entity.news.News;
+import com.practice.ningbao.entity.news.NewsEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2021-01-08
  */
 @Mapper
-public interface NewsMapper extends BaseMapper<News> {
+public interface NewsMapper extends BaseMapper<NewsEntity> {
 
 }

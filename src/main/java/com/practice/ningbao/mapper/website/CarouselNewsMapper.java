@@ -1,6 +1,6 @@
 package com.practice.ningbao.mapper.website;
 
-import com.practice.ningbao.entity.website.CarouselNews;
+import com.practice.ningbao.entity.website.CarouselNewsEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2021-01-08
  */
 @Mapper
-public interface CarouselNewsMapper extends BaseMapper<CarouselNews> {
+public interface CarouselNewsMapper extends BaseMapper<CarouselNewsEntity> {
 
 }

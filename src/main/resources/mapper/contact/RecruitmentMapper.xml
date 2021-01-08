@@ -3,7 +3,7 @@
 <mapper namespace="com.practice.ningbao.mapper.contact.RecruitmentMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.contact.Recruitment">
+    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.contact.RecruitmentEntity">
         <id column="recruitment_id" property="recruitmentId" />
         <result column="content" property="content" />
         <result column="title" property="title" />

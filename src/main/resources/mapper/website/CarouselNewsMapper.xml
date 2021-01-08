@@ -3,7 +3,7 @@
 <mapper namespace="com.practice.ningbao.mapper.website.CarouselNewsMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.website.CarouselNews">
+    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.website.CarouselNewsEntity">
         <id column="news_id" property="newsId" />
         <result column="news_link" property="newsLink" />
     </resultMap>

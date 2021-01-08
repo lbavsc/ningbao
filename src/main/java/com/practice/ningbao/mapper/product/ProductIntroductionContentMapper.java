@@ -1,6 +1,6 @@
 package com.practice.ningbao.mapper.product;
 
-import com.practice.ningbao.entity.product.ProductIntroductionContent;
+import com.practice.ningbao.entity.product.ProductIntroductionContentEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2021-01-08
  */
 @Mapper
-public interface ProductIntroductionContentMapper extends BaseMapper<ProductIntroductionContent> {
+public interface ProductIntroductionContentMapper extends BaseMapper<ProductIntroductionContentEntity> {
 
 }

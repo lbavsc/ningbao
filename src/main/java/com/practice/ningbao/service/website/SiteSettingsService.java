@@ -1,6 +1,6 @@
 package com.practice.ningbao.service.website;
 
-import com.practice.ningbao.entity.website.SiteSettings;
+import com.practice.ningbao.entity.website.SiteSettingsEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author lbavsc
  * @since 2021-01-08
  */
-public interface SiteSettingsService extends IService<SiteSettings> {
+public interface SiteSettingsService extends IService<SiteSettingsEntity> {
 
 }

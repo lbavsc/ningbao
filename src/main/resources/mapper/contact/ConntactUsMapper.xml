@@ -3,7 +3,7 @@
 <mapper namespace="com.practice.ningbao.mapper.contact.ConntactUsMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.contact.ConntactUs">
+    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.contact.ConntactUsEntity">
         <id column="id" property="id" />
         <result column="addr" property="addr" />
         <result column="cell_phone" property="cellPhone" />

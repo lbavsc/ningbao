@@ -1,4 +1,4 @@
-package com.practice.ningbao.entity.company;
+package com.practice.ningbao.entity.contact;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
@@ -25,22 +25,46 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="CompanyOverviewContent对象", description="")
-public class CompanyOverviewContent implements Serializable {
+@ApiModel(value="ConntactUs对象", description="")
+public class ConntactUsEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    @ApiModelProperty(value = "公司概况内容ID")
-    @TableId(value = "content_id", type = IdType.AUTO)
-    private Integer contentId;
+    @ApiModelProperty(value = "ID")
+    @TableId(value = "id", type = IdType.ID_WORKER)
+    private Integer id;
 
-    @ApiModelProperty(value = "内容")
-    @TableField("content")
-    private String content;
+    @ApiModelProperty(value = "地址")
+    @TableField("addr")
+    private String addr;
 
-    @ApiModelProperty(value = "所属目录ID")
-    @TableField("owned_directory")
-    private Integer ownedDirectory;
+    @ApiModelProperty(value = "手机号码")
+    @TableField("cell_phone")
+    private String cellPhone;
+
+    @ApiModelProperty(value = "电话号码")
+    @TableField("phone")
+    private String phone;
+
+    @ApiModelProperty(value = "邮编")
+    @TableField("postcode")
+    private String postcode;
+
+    @ApiModelProperty(value = "传真")
+    @TableField("fax")
+    private String fax;
+
+    @ApiModelProperty(value = "邮箱")
+    @TableField("mailbox")
+    private String mailbox;
+
+    @ApiModelProperty(value = "微信")
+    @TableField("wechat")
+    private String wechat;
+
+    @ApiModelProperty(value = "微博")
+    @TableField("weibo")
+    private String weibo;
 
     @ApiModelProperty(value = "乐观锁")
     @TableField("version")

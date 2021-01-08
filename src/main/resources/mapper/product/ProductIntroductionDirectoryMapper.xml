@@ -3,7 +3,7 @@
 <mapper namespace="com.practice.ningbao.mapper.product.ProductIntroductionDirectoryMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.product.ProductIntroductionDirectory">
+    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.product.ProductIntroductionDirectoryEntity">
         <id column="directory_id" property="directoryId" />
         <result column="directory_name" property="directoryName" />
         <result column="version" property="version" />
