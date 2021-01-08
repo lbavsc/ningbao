@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.practice.ningbao.mapper.contact.ConntactUsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.contact.ConntactUs">
+        <id column="id" property="id" />
+        <result column="addr" property="addr" />
+        <result column="cell_phone" property="cellPhone" />
+        <result column="phone" property="phone" />
+        <result column="postcode" property="postcode" />
+        <result column="fax" property="fax" />
+        <result column="mailbox" property="mailbox" />
+        <result column="wechat" property="wechat" />
+        <result column="weibo" property="weibo" />
+        <result column="version" property="version" />
+        <result column="is_delete" property="isDelete" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="gmt_update" property="gmtUpdate" />
+    </resultMap>
+
+</mapper>
