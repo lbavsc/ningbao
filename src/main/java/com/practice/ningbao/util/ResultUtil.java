@@ -16,7 +16,7 @@ public class ResultUtil {
     public static ResultEntity success(Object object) {
         ResultEntity resultEntity = new ResultEntity();
         resultEntity.setCode(ResultCodeEnum.SUCCESS.getCode());
-        resultEntity.setMsg(ResultCodeEnum.SUCCESS.getMsg());
+        resultEntity.setMessage(ResultCodeEnum.SUCCESS.getMsg());
         resultEntity.setData(object);
         return resultEntity;
     }
@@ -27,7 +27,7 @@ public class ResultUtil {
     public static ResultEntity success() {
         ResultEntity resultEntity = new ResultEntity();
         resultEntity.setCode(ResultCodeEnum.SUCCESS.getCode());
-        resultEntity.setMsg(ResultCodeEnum.SUCCESS.getMsg());
+        resultEntity.setMessage(ResultCodeEnum.SUCCESS.getMsg());
         resultEntity.setData(null);
         return resultEntity;
     }
@@ -38,17 +38,19 @@ public class ResultUtil {
     public static ResultEntity error(String code, String msg) {
         ResultEntity resultEntity = new ResultEntity();
         resultEntity.setCode(code);
-        resultEntity.setMsg(msg);
+        resultEntity.setMessage(msg);
         return resultEntity;
     }
 
+
+
     /**
-     * 失败但不数据
+     * 失败但带数据
      **/
     public static ResultEntity error(String code, String msg, Object data) {
         ResultEntity resultEntity = new ResultEntity();
         resultEntity.setCode(code);
-        resultEntity.setMsg(msg);
+        resultEntity.setMessage(msg);
         resultEntity.setData(data);
         return resultEntity;
     }
