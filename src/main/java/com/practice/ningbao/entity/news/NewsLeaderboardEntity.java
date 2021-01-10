@@ -1,6 +1,7 @@
 package com.practice.ningbao.entity.news;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.Version;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
@@ -22,6 +23,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @ApiModel(value="NewsLeaderboard对象", description="")
+@TableName("news_leaderboard")
 public class NewsLeaderboardEntity implements Serializable {
 
     private static final long serialVersionUID=1L;
