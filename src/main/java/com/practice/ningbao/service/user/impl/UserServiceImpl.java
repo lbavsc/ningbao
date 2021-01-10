@@ -54,8 +54,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
     }
 
     @Override
-    public UserInfo info(LoginForm form) {
-        int id = form.getId();
+    public UserInfo info(Integer id) {
         tokenService.isExprie(String.valueOf(id));
         UserEntity userEntity = baseMapper.selectById(id);
         UserInfo userInfo = new UserInfo();

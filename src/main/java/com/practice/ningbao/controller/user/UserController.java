@@ -70,7 +70,7 @@ public class UserController {
             if (LoginConstant.USER_BAN.equals(accountStatus)) {
                 return ResultUtil.error("1001", "帐号被封禁中");
             }
-            UserInfo userInfo = userService.info(loginForm);
+            UserInfo userInfo = userService.info(loginForm.getId());
             return ResultUtil.success(userInfo);
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
@@ -104,7 +104,7 @@ public class UserController {
             if (LoginConstant.USER_BAN.equals(accountStatus)) {
                 return ResultUtil.error("1001", "帐号被封禁中");
             }
-            UserInfo userInfo = userService.info(loginForm);
+            UserInfo userInfo = userService.info(loginForm.getId());
             return ResultUtil.success(userInfo);
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
@@ -139,7 +139,23 @@ public class UserController {
             if (LoginConstant.USER_BAN.equals(accountStatus)) {
                 return ResultUtil.error("1001", "帐号被封禁中");
             }
-            UserInfo userInfo = userService.info(loginForm);
+            UserInfo userInfo = userService.info(loginForm.getId());
+            return ResultUtil.success(userInfo);
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统发生错误,请联系管理员");
+        }
+    }
+
+    @ApiOperation("获得用户个人信息")
+    @GetMapping("/info")
+    public ResultEntity info(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token) {
+        try {
+            TokenEntity tokenEntity = tokenService.queryByToken(token);
+            if (tokenEntity == null) {
+                return ResultUtil.error("1003", "登录状态发生变化,请重新登录");
+            }
+            int userId = tokenEntity.getUserId();
+            UserInfo userInfo = userService.info(userId);
             return ResultUtil.success(userInfo);
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
@@ -240,9 +256,12 @@ public class UserController {
                 return ResultUtil.error("1001", "您不是管理员");
 
             }
-            System.out.println(userService.isAdmin(token));
-
-            userService.saveOrUpdate(userEntity);
+            userService.getBaseMapper().selectById(userEntity.getId());
+            if (!userEntity.getPassword().isEmpty()) {
+                userEntity.setPassword(DigestUtils.md5DigestAsHex(userEntity.getPassword().getBytes()));
+            }
+//            userService.saveOrUpdate(userEntity);
+            userService.getBaseMapper().updateById(userEntity);
 
             return ResultUtil.success("修改" + userEntity.getName() + "用户信息成功");
         } catch (Exception e) {

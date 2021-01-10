@@ -31,7 +31,7 @@ public interface UserService extends IService<UserEntity> {
 
     public boolean isAdmin(String token);
 
-    public UserInfo info(LoginForm form);
+    public UserInfo info(Integer id);
 
     public String userVerification(LoginForm form);
 

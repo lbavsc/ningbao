@@ -18,8 +18,9 @@
     <select id="selectPageVo" resultType="com.practice.ningbao.entity.user.UserEntity">
         SELECT *
         FROM user
-        WHERE (user_status = #{state})
-           or (#{state} is null)
+        WHERE ((user_status = #{state})
+            or (#{state} is null))
+          and is_delete = 0
     </select>
 
 </mapper>
