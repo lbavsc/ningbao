@@ -27,4 +27,6 @@ public interface TokenService extends IService<TokenEntity> {
      * @param userId 用户ID
      */
     void expireToken(String userId);
+
+    void isExprie(String userId);
 }

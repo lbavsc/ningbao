@@ -1,5 +1,7 @@
 package com.practice.ningbao.service.user.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.practice.ningbao.entity.user.TokenEntity;
 import com.practice.ningbao.entity.user.UserEntity;
 import com.practice.ningbao.mapper.user.UserMapper;
@@ -7,9 +9,8 @@ import com.practice.ningbao.service.user.TokenService;
 import com.practice.ningbao.service.user.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.practice.ningbao.util.constant.LoginConstant;
-import com.practice.ningbao.util.ResultCodeEnum;
 import com.practice.ningbao.util.ValidateCodeUtil;
-import com.practice.ningbao.util.form.LoginForm;
+import com.practice.ningbao.vo.LoginForm;
 import com.practice.ningbao.vo.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,6 +56,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
     @Override
     public UserInfo info(LoginForm form) {
         int id = form.getId();
+        tokenService.isExprie(String.valueOf(id));
         UserEntity userEntity = baseMapper.selectById(id);
         UserInfo userInfo = new UserInfo();
         userInfo.setId(userEntity.getId());
@@ -109,9 +111,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
         return false;
     }
 
+    @Override
+    public IPage<UserEntity> selectUserPage(Page<UserEntity> page, Integer state) {
+        return baseMapper.selectPageVo(page, state);
+    }
+
 
     @Override
     public boolean isAdmin(String token) {
+        tokenService.isExprie(String.valueOf(tokenService.queryByToken(token).getUserId()));
         TokenEntity tokenEntity = tokenService.queryByToken(token);
         if (tokenEntity == null) {
             return false;

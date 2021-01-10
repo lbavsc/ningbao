@@ -1,4 +1,4 @@
-package com.practice.ningbao.util.form;
+package com.practice.ningbao.vo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

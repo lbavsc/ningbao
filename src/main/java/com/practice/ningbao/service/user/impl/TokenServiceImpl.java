@@ -22,6 +22,7 @@ import java.util.UUID;
 @Service
 public class TokenServiceImpl extends ServiceImpl<TokenMapper, TokenEntity> implements TokenService {
 
+
     /**
      * 12小时后过期
      */
@@ -55,6 +56,17 @@ public class TokenServiceImpl extends ServiceImpl<TokenMapper, TokenEntity> impl
     @Override
     public void expireToken(String userId) {
         baseMapper.deleteById(userId);
+    }
+
+    @Override
+    public void isExprie(String userId) {
+        // 获得token过期时间
+        Date expireTime = baseMapper.selectById(userId).getExpireTime();
+        // 如果过期时间和当前时间差距小于一个数字时,将token进行过期处理
+        long tokenRemainingTime = expireTime.getTime() - System.currentTimeMillis();
+        if (tokenRemainingTime < 1000) {
+            expireToken(userId);
+        }
     }
 
     private String generateToken() {

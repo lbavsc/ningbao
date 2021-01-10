@@ -4,15 +4,22 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.user.UserEntity">
-        <id column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="password" property="password" />
-        <result column="user_type" property="userType" />
-        <result column="user_status" property="userStatus" />
-        <result column="version" property="version" />
-        <result column="is_delete" property="isDelete" />
-        <result column="gmt_create" property="gmtCreate" />
-        <result column="gmt_update" property="gmtUpdate" />
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="user_type" property="userType"/>
+        <result column="user_status" property="userStatus"/>
+        <result column="version" property="version"/>
+        <result column="is_delete" property="isDelete"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_update" property="gmtUpdate"/>
     </resultMap>
+
+    <select id="selectPageVo" resultType="com.practice.ningbao.entity.user.UserEntity">
+        SELECT *
+        FROM user
+        WHERE (user_status = #{state})
+           or (#{state} is null)
+    </select>
 
 </mapper>

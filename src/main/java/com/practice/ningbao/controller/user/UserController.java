@@ -1,6 +1,7 @@
 package com.practice.ningbao.controller.user;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.practice.ningbao.entity.ResultEntity;
 import com.practice.ningbao.entity.user.TokenEntity;
 import com.practice.ningbao.entity.user.UserEntity;
@@ -10,7 +11,8 @@ import com.practice.ningbao.util.constant.LoginConstant;
 import com.practice.ningbao.util.ResultUtil;
 import com.practice.ningbao.util.ValidateCodeUtil;
 import com.practice.ningbao.util.constant.UserConstant;
-import com.practice.ningbao.util.form.LoginForm;
+import com.practice.ningbao.vo.LoginForm;
+import com.practice.ningbao.vo.MyPage;
 import com.practice.ningbao.vo.UserInfo;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -153,39 +155,54 @@ public class UserController {
     @ApiOperation("用户登出")
     @GetMapping("/logout")
     public ResultEntity logout(@RequestHeader String token) {
-        TokenEntity tokenEntity = tokenService.queryByToken(token);
-        if (tokenEntity == null) {
-            return ResultUtil.error("1002", "您当前未登录");
+        try {
+            TokenEntity tokenEntity = tokenService.queryByToken(token);
+            if (tokenEntity == null) {
+                return ResultUtil.error("1002", "您当前未登录");
+            }
+            String id = String.valueOf(tokenEntity.getUserId());
+            tokenService.expireToken(id);
+            return ResultUtil.success();
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }
-        String id = String.valueOf(tokenEntity.getUserId());
-        tokenService.expireToken(id);
-        return ResultUtil.success();
+
     }
 
     @ApiOperation("新增用户")
     @PostMapping("/admin/add_user")
     public ResultEntity userAdd(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                 @ApiParam("新增用户名") @RequestBody UserEntity userEntity) {
-        if (!userService.isAdmin(token)) {
-            return ResultUtil.error("1001", "您不是管理员");
-        }
-        userEntity.setPassword(DigestUtils.md5DigestAsHex(userEntity.getPassword().getBytes()));
-        userService.save(userEntity);
+        try {
+            if (!userService.isAdmin(token)) {
+                return ResultUtil.error("1001", "您不是管理员");
+            }
+            userEntity.setPassword(DigestUtils.md5DigestAsHex(userEntity.getPassword().getBytes()));
+            userService.save(userEntity);
 
-        return ResultUtil.success("用户" + userEntity.getName() + "添加成功");
+            return ResultUtil.success("用户" + userEntity.getName() + "添加成功");
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统发生错误,请联系管理员");
+        }
+
     }
 
     @ApiOperation("封禁用户")
     @PostMapping("/admin/ban_user")
     public ResultEntity userBan(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                 @ApiParam("封禁用户名") @RequestBody UserEntity userEntity) {
-        if (userService.isAdmin(token)) {
-            return ResultUtil.error("1001", "您不是管理员");
+        try {
+            if (!userService.isAdmin(token)) {
+                return ResultUtil.error("1001", "您不是管理员");
+            }
+            if (!userService.banUser(userEntity, token)) {
+                return ResultUtil.error("1001", "不能封禁自己");
+            }
+            return ResultUtil.success("封禁" + userEntity.getName() + "用户成功");
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }
-        if (!userService.banUser(userEntity, token)) {
-            return ResultUtil.error("1001", "不能封禁自己");
-        }
-        return ResultUtil.success("封禁" + userEntity.getName() + "用户成功");
+
     }
 
     /**
@@ -199,28 +216,69 @@ public class UserController {
     @PostMapping("/admin/delete_user")
     public ResultEntity userDelete(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                    @ApiParam("封禁用户名") @RequestBody UserEntity userEntity) {
-        if (userService.isAdmin(token)) {
-            return ResultUtil.error("1001", "您不是管理员");
+        try {
+            if (!userService.isAdmin(token)) {
+                return ResultUtil.error("1001", "您不是管理员");
+            }
+            if (!userService.deleteUser(userEntity, token)) {
+                return ResultUtil.error("1001", "不能删除自己");
+            }
+            return ResultUtil.success("删除" + userEntity.getName() + "用户成功");
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }
-        if (!userService.deleteUser(userEntity, token)) {
-            return ResultUtil.error("1001", "不能删除自己");
-        }
-        return ResultUtil.success("删除" + userEntity.getName() + "用户成功");
+
     }
 
     @ApiOperation("修改用户信息")
     @PostMapping("/admin/reset_user")
     public ResultEntity userReset(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                   @ApiParam("封禁用户名") @RequestBody UserEntity userEntity) {
-        if (userService.isAdmin(token)) {
-            return ResultUtil.error("1001", "您不是管理员");
-        }
-        userService.saveOrUpdate(userEntity);
 
-        return ResultUtil.success("修改" + userEntity.getName() + "用户信息成功");
+        try {
+            if (!userService.isAdmin(token)) {
+                return ResultUtil.error("1001", "您不是管理员");
+
+            }
+            System.out.println(userService.isAdmin(token));
+
+            userService.saveOrUpdate(userEntity);
+
+            return ResultUtil.success("修改" + userEntity.getName() + "用户信息成功");
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统发生错误,请联系管理员");
+        }
+
     }
 
-    // // TODO: 2021/1/9 根据分页获得用户列表
+    @ApiOperation("用户列表")
+    @GetMapping("/admin/list_user")
+    public ResultEntity ListUser(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
+                                 @ApiParam("查询的页数") @RequestParam(required = false) Integer current,
+                                 @ApiParam("一页的数量") @RequestParam(required = false) Integer size,
+                                 @ApiParam("用户类型") @RequestParam(required = false) Integer state) {
+        try {
+            if (!userService.isAdmin(token)) {
+                return ResultUtil.error("1001", "您不是管理员");
+            }
+            if (current == null) {
+                current = 1;
+            }
+            if (size == null) {
+                size = 10;
+            }
+            MyPage<UserEntity> myPage = new MyPage<>(current, size);
+            IPage<UserEntity> userEntityIpage = userService.selectUserPage(myPage, state);
+            if (userEntityIpage.getTotal() == 0) {
+                return ResultUtil.error("1004", "没有相关的数据");
+            }
+            return ResultUtil.success(userEntityIpage.getRecords());
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统发生错误,请联系管理员");
+        }
+
+    }
+
     /**
      * 获取验证码接口
      *
