@@ -13,7 +13,7 @@
         <result column="gmt_update" property="gmtUpdate"/>
     </resultMap>
 
-    <select id="selectRecruitmentPageVo" resultType="com.practice.ningbao.entity.user.RecruitmentEntity">
+    <select id="selectRecruitmentPageVo" resultType="com.practice.ningbao.entity.contact.RecruitmentEntity">
         SELECT `recruitment_id`, `title`, `content`
         FROM recruitment
         WHERE is_delete = 0;

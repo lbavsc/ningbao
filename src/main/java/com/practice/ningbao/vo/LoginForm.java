@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 public class LoginForm {
     @ApiModelProperty(value = "用户ID")
     @NotNull(message = "用户ID不能为空")
-    private Integer id;
+    private String id;
 
     @ApiModelProperty(value = "密码")
     @NotEmpty(message = "密码不能为空")

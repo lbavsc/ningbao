@@ -24,7 +24,7 @@ class NingbaoApplicationTests {
     @Test
     void contextLoads() throws SQLException {
         LoginForm userInfo = new LoginForm();
-        userInfo.setId(10151);
+        userInfo.setId("10151");
 
         userService.userVerification(userInfo);
 

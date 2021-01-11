@@ -66,7 +66,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
 
     @Override
     public String userVerification(LoginForm form) {
-        int id = form.getId();
+        Integer id = Integer.valueOf(isStr2Num(form.getId()) ? form.getId() : "-1");
         UserEntity userEntity = baseMapper.selectById(id);
         String password = DigestUtils.md5DigestAsHex(form.getPassword().getBytes());
         //帐号不存在
@@ -126,4 +126,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
         return baseMapper.selectById(tokenEntity.getUserId()).getUserType() == 0;
     }
 
+    public static boolean isStr2Num(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }

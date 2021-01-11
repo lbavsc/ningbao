@@ -72,7 +72,7 @@ public class UserController {
             if (LoginConstant.USER_BAN.equals(accountStatus)) {
                 return ResultUtil.error("1001", "帐号被封禁中");
             }
-            UserInfo userInfo = userService.info(loginForm.getId());
+            UserInfo userInfo = userService.info(Integer.valueOf(loginForm.getId()));
             return ResultUtil.success(userInfo);
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
@@ -106,7 +106,7 @@ public class UserController {
             if (LoginConstant.USER_BAN.equals(accountStatus)) {
                 return ResultUtil.error("1001", "帐号被封禁中");
             }
-            UserInfo userInfo = userService.info(loginForm.getId());
+            UserInfo userInfo = userService.info(Integer.valueOf(loginForm.getId()));
             return ResultUtil.success(userInfo);
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
@@ -140,7 +140,7 @@ public class UserController {
             if (LoginConstant.USER_BAN.equals(accountStatus)) {
                 return ResultUtil.error("1001", "帐号被封禁中");
             }
-            UserInfo userInfo = userService.info(loginForm.getId());
+            UserInfo userInfo = userService.info(Integer.valueOf(loginForm.getId()));
             return ResultUtil.success(userInfo);
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
@@ -151,6 +151,7 @@ public class UserController {
     @GetMapping("/info")
     public ResultEntity info(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token) {
         try {
+            System.out.println(token);
             TokenEntity tokenEntity = tokenService.queryByToken(token);
             if (tokenEntity == null) {
                 return ResultUtil.error("1003", "登录状态发生变化,请重新登录");
