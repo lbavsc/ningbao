@@ -255,14 +255,21 @@ public class UserController {
                 return ResultUtil.error("1001", "您不是管理员");
 
             }
-            userService.getBaseMapper().selectById(userEntity.getId());
+            UserEntity u = userService.getBaseMapper().selectById(userEntity.getId());
+            if (u == null) {
+                return ResultUtil.error("1003", "无此用户");
+            }
+
             if (!userEntity.getPassword().isEmpty()) {
                 userEntity.setPassword(DigestUtils.md5DigestAsHex(userEntity.getPassword().getBytes()));
             }
 //            userService.saveOrUpdate(userEntity);
             userService.getBaseMapper().updateById(userEntity);
 
-            return ResultUtil.success("修改" + userEntity.getName() + "用户信息成功");
+            // 修改用户信息后退出该用户的登录状态
+            tokenService.expireToken(String.valueOf(userEntity.getId()));
+
+            return ResultUtil.success("修改" + u.getName() + "用户信息成功");
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }
