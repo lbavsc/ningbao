@@ -1,11 +1,9 @@
 package com.practice.ningbao.mapper.contact;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.practice.ningbao.entity.contact.RecruitmentEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.practice.ningbao.entity.user.UserEntity;
-import com.practice.ningbao.vo.MyPage;
+import com.practice.ningbao.vo.MyPageVo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -18,5 +16,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface RecruitmentMapper extends BaseMapper<RecruitmentEntity> {
-    IPage<RecruitmentEntity> selectRecruitmentPageVo(MyPage<?> page);
+    IPage<RecruitmentEntity> selectRecruitmentPageVo(MyPageVo<?> page);
 }

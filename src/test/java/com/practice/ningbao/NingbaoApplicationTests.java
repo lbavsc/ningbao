@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.practice.ningbao.entity.user.UserEntity;
 import com.practice.ningbao.service.user.TokenService;
 import com.practice.ningbao.service.user.UserService;
-import com.practice.ningbao.vo.LoginForm;
-import com.practice.ningbao.vo.MyPage;
+import com.practice.ningbao.vo.LoginFormVo;
+import com.practice.ningbao.vo.MyPageVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +23,7 @@ class NingbaoApplicationTests {
     UserService userService;
     @Test
     void contextLoads() throws SQLException {
-        LoginForm userInfo = new LoginForm();
+        LoginFormVo userInfo = new LoginFormVo();
         userInfo.setId("10151");
 
         userService.userVerification(userInfo);
@@ -44,7 +44,7 @@ class NingbaoApplicationTests {
 
     @Test
     void listUser()throws SQLException {
-        MyPage<UserEntity>page = new MyPage<>(1,120);
+        MyPageVo<UserEntity> page = new MyPageVo<>(1,120);
         final IPage<UserEntity> userEntityIPage = userService.selectUserPage(page, null);
         System.out.println(userEntityIPage.getPages());
         System.out.println(userEntityIPage.getTotal());

@@ -10,8 +10,8 @@ import com.practice.ningbao.service.user.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.practice.ningbao.util.constant.LoginConstant;
 import com.practice.ningbao.util.ValidateCodeUtil;
-import com.practice.ningbao.vo.LoginForm;
-import com.practice.ningbao.vo.UserInfo;
+import com.practice.ningbao.vo.LoginFormVo;
+import com.practice.ningbao.vo.UserInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -34,7 +34,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
     TokenService tokenService;
 
     @Override
-    public boolean isCheckCaptcha(LoginForm form, HttpSession session) {
+    public boolean isCheckCaptcha(LoginFormVo form, HttpSession session) {
         String code = form.getVerificationCode();
         String sessionCode;
         sessionCode = String.valueOf(session.getAttribute(ValidateCodeUtil.SESSION_KEY)).toLowerCase();
@@ -47,17 +47,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
     }
 
     @Override
-    public int queryUserType(LoginForm form) {
+    public int queryUserType(LoginFormVo form) {
         UserEntity userEntity = baseMapper.selectById(form.getId());
 
         return userEntity.getUserType();
     }
 
     @Override
-    public UserInfo info(Integer id) {
+    public UserInfoVo info(Integer id) {
         tokenService.isExprie(String.valueOf(id));
         UserEntity userEntity = baseMapper.selectById(id);
-        UserInfo userInfo = new UserInfo();
+        UserInfoVo userInfo = new UserInfoVo();
         userInfo.setId(userEntity.getId());
         userInfo.setName(userEntity.getName());
         userInfo.setToken(tokenService.getBaseMapper().selectById(id).getToken());
@@ -65,7 +65,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
     }
 
     @Override
-    public String userVerification(LoginForm form) {
+    public String userVerification(LoginFormVo form) {
         Integer id = Integer.valueOf(isStr2Num(form.getId()) ? form.getId() : "-1");
         UserEntity userEntity = baseMapper.selectById(id);
         String password = DigestUtils.md5DigestAsHex(form.getPassword().getBytes());

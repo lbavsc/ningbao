@@ -3,21 +3,17 @@ package com.practice.ningbao.controller.contact;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.practice.ningbao.entity.ResultEntity;
-import com.practice.ningbao.entity.contact.ConntactUsEntity;
 import com.practice.ningbao.entity.contact.RecruitmentEntity;
-import com.practice.ningbao.entity.user.UserEntity;
 import com.practice.ningbao.service.contact.RecruitmentService;
 import com.practice.ningbao.service.user.UserService;
 import com.practice.ningbao.util.ResultUtil;
-import com.practice.ningbao.vo.MyPage;
+import com.practice.ningbao.vo.MyPageVo;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * <p>
@@ -44,7 +40,7 @@ public class RecruitmentController {
             if (current == null) {
                 current = 1;
             }
-            MyPage<RecruitmentEntity> myPage = new MyPage<>(current, 10);
+            MyPageVo<RecruitmentEntity> myPage = new MyPageVo<>(current, 10);
             IPage<RecruitmentEntity> recruitmentEntityIpage = recruitmentService.selectRecruitmentPage(myPage);
             if (recruitmentEntityIpage.getTotal() == 0) {
                 return ResultUtil.error("1004", "暂时没有招聘公告");

@@ -1,13 +1,11 @@
 package com.practice.ningbao.service.contact.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.practice.ningbao.entity.contact.RecruitmentEntity;
-import com.practice.ningbao.entity.user.UserEntity;
 import com.practice.ningbao.mapper.contact.RecruitmentMapper;
 import com.practice.ningbao.service.contact.RecruitmentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.practice.ningbao.vo.MyPage;
+import com.practice.ningbao.vo.MyPageVo;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,7 +20,7 @@ import org.springframework.stereotype.Service;
 public class RecruitmentServiceImpl extends ServiceImpl<RecruitmentMapper, RecruitmentEntity> implements RecruitmentService {
 
     @Override
-    public IPage<RecruitmentEntity> selectRecruitmentPage(MyPage<RecruitmentEntity> page) {
+    public IPage<RecruitmentEntity> selectRecruitmentPage(MyPageVo<RecruitmentEntity> page) {
         return baseMapper.selectRecruitmentPageVo(page);
     }
 

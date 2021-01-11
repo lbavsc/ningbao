@@ -1,11 +1,9 @@
 package com.practice.ningbao.service.contact;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.practice.ningbao.entity.contact.RecruitmentEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.practice.ningbao.entity.user.UserEntity;
-import com.practice.ningbao.vo.MyPage;
+import com.practice.ningbao.vo.MyPageVo;
 
 /**
  * <p>
@@ -16,7 +14,7 @@ import com.practice.ningbao.vo.MyPage;
  * @since 2021-01-08
  */
 public interface RecruitmentService extends IService<RecruitmentEntity> {
-    public IPage<RecruitmentEntity> selectRecruitmentPage(MyPage<RecruitmentEntity> page);
+    public IPage<RecruitmentEntity> selectRecruitmentPage(MyPageVo<RecruitmentEntity> page);
 
     public void deleteRecruitment(Integer id);
 }

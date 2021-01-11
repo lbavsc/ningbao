@@ -11,13 +11,12 @@ import com.practice.ningbao.util.constant.LoginConstant;
 import com.practice.ningbao.util.ResultUtil;
 import com.practice.ningbao.util.ValidateCodeUtil;
 import com.practice.ningbao.util.constant.UserConstant;
-import com.practice.ningbao.vo.LoginForm;
-import com.practice.ningbao.vo.MyPage;
-import com.practice.ningbao.vo.UserInfo;
+import com.practice.ningbao.vo.LoginFormVo;
+import com.practice.ningbao.vo.MyPageVo;
+import com.practice.ningbao.vo.UserInfoVo;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +52,7 @@ public class UserController {
      */
     @ApiOperation("企业用户登录")
     @PostMapping("/enterprise/login")
-    public ResultEntity enterpriseLogin(@RequestBody @Validated LoginForm loginForm, HttpSession session) {
+    public ResultEntity enterpriseLogin(@RequestBody @Validated LoginFormVo loginForm, HttpSession session) {
         String accountStatus = userService.userVerification(loginForm);
         try {
             if (!userService.isCheckCaptcha(loginForm, session)) {
@@ -72,7 +71,7 @@ public class UserController {
             if (LoginConstant.USER_BAN.equals(accountStatus)) {
                 return ResultUtil.error("1001", "帐号被封禁中");
             }
-            UserInfo userInfo = userService.info(Integer.valueOf(loginForm.getId()));
+            UserInfoVo userInfo = userService.info(Integer.valueOf(loginForm.getId()));
             return ResultUtil.success(userInfo);
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
@@ -87,7 +86,7 @@ public class UserController {
      */
     @ApiOperation("供应商用户登录")
     @PostMapping("/supplier/login")
-    public ResultEntity supplierLogin(@RequestBody @Validated LoginForm loginForm, HttpSession session) {
+    public ResultEntity supplierLogin(@RequestBody @Validated LoginFormVo loginForm, HttpSession session) {
         String accountStatus = userService.userVerification(loginForm);
         try {
             if (!userService.isCheckCaptcha(loginForm, session)) {
@@ -106,7 +105,7 @@ public class UserController {
             if (LoginConstant.USER_BAN.equals(accountStatus)) {
                 return ResultUtil.error("1001", "帐号被封禁中");
             }
-            UserInfo userInfo = userService.info(Integer.valueOf(loginForm.getId()));
+            UserInfoVo userInfo = userService.info(Integer.valueOf(loginForm.getId()));
             return ResultUtil.success(userInfo);
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
@@ -121,7 +120,7 @@ public class UserController {
      */
     @ApiOperation("管理员登录")
     @PostMapping("/admin/login")
-    public ResultEntity adminLogin(@RequestBody @Validated LoginForm loginForm, HttpSession session) {
+    public ResultEntity adminLogin(@RequestBody @Validated LoginFormVo loginForm, HttpSession session) {
         String accountStatus = userService.userVerification(loginForm);
         try {
             if (!userService.isCheckCaptcha(loginForm, session)) {
@@ -140,7 +139,7 @@ public class UserController {
             if (LoginConstant.USER_BAN.equals(accountStatus)) {
                 return ResultUtil.error("1001", "帐号被封禁中");
             }
-            UserInfo userInfo = userService.info(Integer.valueOf(loginForm.getId()));
+            UserInfoVo userInfo = userService.info(Integer.valueOf(loginForm.getId()));
             return ResultUtil.success(userInfo);
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
@@ -157,7 +156,7 @@ public class UserController {
                 return ResultUtil.error("1003", "登录状态发生变化,请重新登录");
             }
             int userId = tokenEntity.getUserId();
-            UserInfo userInfo = userService.info(userId);
+            UserInfoVo userInfo = userService.info(userId);
             return ResultUtil.success(userInfo);
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
@@ -184,7 +183,6 @@ public class UserController {
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }
-
     }
 
     @ApiOperation("新增用户")
@@ -202,7 +200,6 @@ public class UserController {
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }
-
     }
 
     @ApiOperation("封禁用户")
@@ -288,7 +285,7 @@ public class UserController {
             if (size == null) {
                 size = 10;
             }
-            MyPage<UserEntity> myPage = new MyPage<>(current, size);
+            MyPageVo<UserEntity> myPage = new MyPageVo<>(current, size);
             IPage<UserEntity> userEntityIpage = userService.selectUserPage(myPage, state);
             if (userEntityIpage.getTotal() == 0) {
                 return ResultUtil.error("1004", "没有相关的数据");

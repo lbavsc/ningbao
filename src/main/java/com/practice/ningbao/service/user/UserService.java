@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.practice.ningbao.entity.user.UserEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.practice.ningbao.vo.LoginForm;
-import com.practice.ningbao.vo.UserInfo;
+import com.practice.ningbao.vo.LoginFormVo;
+import com.practice.ningbao.vo.UserInfoVo;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,15 +25,15 @@ public interface UserService extends IService<UserEntity> {
      * @param session
      * @return
      */
-    public boolean isCheckCaptcha(LoginForm form, HttpSession session);
+    public boolean isCheckCaptcha(LoginFormVo form, HttpSession session);
 
-    public int queryUserType(LoginForm form);
+    public int queryUserType(LoginFormVo form);
 
     public boolean isAdmin(String token);
 
-    public UserInfo info(Integer id);
+    public UserInfoVo info(Integer id);
 
-    public String userVerification(LoginForm form);
+    public String userVerification(LoginFormVo form);
 
     public boolean banUser(UserEntity userEntity,  String token);
 
