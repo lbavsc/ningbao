@@ -17,5 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/ningbao/novice_guide")
 public class NoviceGuideController {
 
+    //// TODO: 2021/1/11 查询新手指引
+
+    //// TODO: 2021/1/11 修改新手指引
+
 }
 

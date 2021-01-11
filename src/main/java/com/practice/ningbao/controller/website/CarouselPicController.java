@@ -17,5 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/ningbao/carousel-pic")
 public class CarouselPicController {
 
+    //// TODO: 2021/1/11 修改轮播图
+
+
 }
 

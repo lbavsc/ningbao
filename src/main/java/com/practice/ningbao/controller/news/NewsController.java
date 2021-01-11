@@ -17,5 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/ningbao/news")
 public class NewsController {
 
+    //// TODO: 2021/1/11 查询新闻列表
+
+    //// TODO: 2021/1/11 新增新闻
+
+   //// TODO: 2021/1/11 修改新闻
+
+   //// TODO: 2021/1/11 删除新闻
+
+
+
 }
 

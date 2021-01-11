@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/ningbao/company_overview_content")
 public class CompanyOverviewContentController {
-//    @Autowired
-//    CompanyOverviewContentService companyOverviewContentService;
+    @Autowired
+    CompanyOverviewContentService companyOverviewContentService;
 
     //// TODO: 2021/1/11 获取对应目录内容
 
