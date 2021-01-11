@@ -31,11 +31,11 @@ public class RecruitmentEntity implements Serializable {
     @TableId(value = "recruitment_id", type = IdType.AUTO)
     private Integer recruitmentId;
 
-    @ApiModelProperty(value = "招聘公告标题")
+    @ApiModelProperty(value = "招聘公告内容")
     @TableField("content")
     private String content;
 
-    @ApiModelProperty(value = "招聘公告内容")
+    @ApiModelProperty(value = "招聘公告标题")
     @TableField("title")
     private String title;
 

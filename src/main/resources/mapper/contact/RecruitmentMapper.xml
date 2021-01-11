@@ -4,13 +4,18 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.contact.RecruitmentEntity">
-        <id column="recruitment_id" property="recruitmentId" />
-        <result column="content" property="content" />
-        <result column="title" property="title" />
-        <result column="version" property="version" />
-        <result column="is_delete" property="isDelete" />
-        <result column="gmt_create" property="gmtCreate" />
-        <result column="gmt_update" property="gmtUpdate" />
+        <id column="recruitment_id" property="recruitmentId"/>
+        <result column="content" property="content"/>
+        <result column="title" property="title"/>
+        <result column="version" property="version"/>
+        <result column="is_delete" property="isDelete"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_update" property="gmtUpdate"/>
     </resultMap>
 
+    <select id="selectRecruitmentPageVo" resultType="com.practice.ningbao.entity.user.RecruitmentEntity">
+        SELECT `recruitment_id`, `title`, `content`
+        FROM recruitment
+        WHERE is_delete = 0;
+    </select>
 </mapper>
