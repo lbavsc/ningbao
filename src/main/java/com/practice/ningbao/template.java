@@ -54,9 +54,10 @@ public class template {
         mpg.setPackageInfo(pc);
 
         StrategyConfig st = new StrategyConfig();
-        st.setInclude("carousel_news", "carousel_pic", "company_overview_content", "company_overview_directory",
-                 "conntact_us", "news", "news_leaderboard", "novice_guide", "product_introduction_content",
-                "product_introduction_directory", "recruitment", "site_settings", "token", "user");
+//        st.setInclude("carousel_news", "carousel_pic", "company_overview_content", "company_overview_directory",
+//                 "conntact_us", "news", "news_leaderboard", "novice_guide", "product_introduction_content",
+//                "product_introduction_directory", "recruitment", "site_settings", "token", "user");
+        st.setInclude("news_directory", "partner");
         st.setNaming(NamingStrategy.underline_to_camel);
         st.setColumnNaming(NamingStrategy.underline_to_camel);
         st.setEntityLombokModel(true);
