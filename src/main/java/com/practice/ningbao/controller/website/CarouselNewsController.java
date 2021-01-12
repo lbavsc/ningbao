@@ -3,6 +3,7 @@ package com.practice.ningbao.controller.website;
 
 import com.practice.ningbao.entity.ResultEntity;
 import com.practice.ningbao.entity.website.CarouselNewsEntity;
+import com.practice.ningbao.service.news.NewsService;
 import com.practice.ningbao.service.user.UserService;
 import com.practice.ningbao.service.website.CarouselNewsService;
 import com.practice.ningbao.util.ResultUtil;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -31,12 +34,15 @@ public class CarouselNewsController {
     @Autowired
     CarouselNewsService carouselNewsService;
 
-
+    @Autowired
+    NewsService newsService;
     @ApiOperation("获得轮播新闻")
     @GetMapping("/get")
     public ResultEntity getCarouselNews() {
         try {
-            return ResultUtil.success(carouselNewsService.list());
+            List<Integer> list = new ArrayList<>();
+            carouselNewsService.list().forEach(e ->list.add(e.getNewsId()));
+            return ResultUtil.success(newsService.listByIds(list));
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }

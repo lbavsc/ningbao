@@ -5,6 +5,7 @@ import com.practice.ningbao.entity.ResultEntity;
 import com.practice.ningbao.entity.news.NewsLeaderboardEntity;
 import com.practice.ningbao.entity.website.CarouselNewsEntity;
 import com.practice.ningbao.service.news.NewsLeaderboardService;
+import com.practice.ningbao.service.news.NewsService;
 import com.practice.ningbao.service.user.UserService;
 import com.practice.ningbao.util.ResultUtil;
 import io.swagger.annotations.ApiOperation;
@@ -13,12 +14,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  * 新闻排行榜
+ *
  * @author lbavsc
  * @since 2021-01-08
  */
@@ -31,11 +36,16 @@ public class NewsLeaderboardController {
     NewsLeaderboardService newsLeaderboardService;
 
 
+    @Autowired
+    NewsService newsService;
+
     @ApiOperation("获得轮播排行榜")
     @GetMapping("/get")
     public ResultEntity getCarouselNews() {
         try {
-            return ResultUtil.success(newsLeaderboardService.list());
+            List<Integer>list = new ArrayList<>();
+            newsLeaderboardService.list().forEach(e ->list.add(e.getNewsId()));
+            return ResultUtil.success(newsService.listByIds(list));
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }
