@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2021-01-08
  */
 @RestController
-@RequestMapping("/ningbao/carousel-news")
+@RequestMapping("/carousel_news")
 public class CarouselNewsController {
 
     //// TODO: 2021/1/11 获取推荐新闻

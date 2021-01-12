@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2021-01-08
  */
 @RestController
-@RequestMapping("/ningbao/news-leaderboard")
+@RequestMapping("/news_leaderboard")
 public class NewsLeaderboardController {
 
 }

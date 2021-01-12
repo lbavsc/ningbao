@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2021-01-08
  */
 @RestController
-@RequestMapping("/ningbao/product_introduction_content")
+@RequestMapping("/product_introduction_content")
 public class ProductIntroductionContentController {
 
     //// TODO: 2021/1/11 获取对应目录内容

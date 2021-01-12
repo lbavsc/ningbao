@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2021-01-08
  */
 @RestController
-@RequestMapping("/ningbao/news")
+@RequestMapping("/news")
 public class NewsController {
 
     //// TODO: 2021/1/11 查询新闻列表

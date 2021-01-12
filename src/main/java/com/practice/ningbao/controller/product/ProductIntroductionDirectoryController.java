@@ -25,7 +25,7 @@ import javax.validation.constraints.NotNull;
  * @since 2021-01-08
  */
 @RestController
-@RequestMapping("/ningbao/product-introduction-directory")
+@RequestMapping("/product_introduction_directory")
 public class ProductIntroductionDirectoryController {
     @Autowired
     UserService userService;

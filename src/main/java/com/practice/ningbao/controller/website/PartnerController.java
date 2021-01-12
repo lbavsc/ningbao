@@ -86,7 +86,7 @@ public class PartnerController {
 
     //// FIXME: 2021/1/12 MultipartFile如果为空, equired = false无效
 
-    @ApiOperation("新增合作伙伴")
+    @ApiOperation("修改合作伙伴")
     @PostMapping("/modify")
     public ResultEntity modifyPartner(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                       @ApiParam("图片") MultipartFile img,
