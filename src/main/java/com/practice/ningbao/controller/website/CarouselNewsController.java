@@ -1,27 +1,78 @@
 package com.practice.ningbao.controller.website;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.practice.ningbao.entity.ResultEntity;
+import com.practice.ningbao.entity.website.CarouselNewsEntity;
+import com.practice.ningbao.service.user.UserService;
+import com.practice.ningbao.service.website.CarouselNewsService;
+import com.practice.ningbao.util.ResultUtil;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import org.springframework.web.bind.annotation.RestController;
+import javax.validation.constraints.NotNull;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  * 轮播新闻
+ *
  * @author lbavsc
  * @since 2021-01-08
  */
 @RestController
 @RequestMapping("/carousel_news")
 public class CarouselNewsController {
+    @Autowired
+    UserService userService;
+    @Autowired
+    CarouselNewsService carouselNewsService;
 
-    //// TODO: 2021/1/11 获取推荐新闻
 
-    //// TODO: 2021/1/11 删除推荐新闻
+    @ApiOperation("获得轮播新闻")
+    @GetMapping("/get")
+    public ResultEntity getCarouselNews() {
+        try {
+            return ResultUtil.success(carouselNewsService.list());
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统发生错误,请联系管理员");
+        }
 
-    //// TODO: 2021/1/11 新增推荐新闻
+    }
 
+    @ApiOperation("删除轮播新闻")
+    @GetMapping("/delete")
+    public ResultEntity deleteCarouselNews(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
+                                           @ApiParam("新闻") @RequestBody CarouselNewsEntity carouselNewsEntity) {
+        try {
+            if (!userService.isAdmin(token)) {
+                return ResultUtil.error("1002", "您不是管理员");
+            }
+            carouselNewsService.removeById(carouselNewsEntity);
+            return ResultUtil.success();
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统发生错误,请联系管理员");
+        }
+
+    }
+
+    @ApiOperation("新增轮播新闻")
+    @GetMapping("/add")
+    public ResultEntity addCarouselNews(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
+                                           @ApiParam("新闻") @RequestBody CarouselNewsEntity carouselNewsEntity) {
+        try {
+            if (!userService.isAdmin(token)) {
+                return ResultUtil.error("1002", "您不是管理员");
+            }
+            carouselNewsService.save(carouselNewsEntity);
+            return ResultUtil.success();
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统发生错误,请联系管理员");
+        }
+
+    }
 }
 

@@ -31,6 +31,10 @@ public class NewsEntity implements Serializable {
     @TableId(value = "news_id", type = IdType.AUTO)
     private Integer newsId;
 
+    @ApiModelProperty(value = "新闻来源")
+    @TableField("news_source")
+    private String newsSource;
+
     @ApiModelProperty(value = "新闻标题")
     @TableField("title")
     private String title;

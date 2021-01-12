@@ -31,9 +31,9 @@ public class CarouselPicController {
     CarouselPicService carouselPicService;
 
 
-    @ApiOperation("获得新手指引")
+    @ApiOperation("获得轮播图")
     @GetMapping("/get")
-    public ResultEntity getNoviceGuide() {
+    public ResultEntity getCarouselPic() {
         try {
             return ResultUtil.success(carouselPicService.list());
         } catch (Exception e) {

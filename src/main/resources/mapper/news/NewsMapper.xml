@@ -4,15 +4,23 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.news.NewsEntity">
-        <id column="news_id" property="newsId" />
-        <result column="title" property="title" />
-        <result column="original_title" property="originalTitle" />
-        <result column="content" property="content" />
-        <result column="news_type" property="newsType" />
-        <result column="version" property="version" />
-        <result column="is_delete" property="isDelete" />
-        <result column="gmt_create" property="gmtCreate" />
-        <result column="gmt_update" property="gmtUpdate" />
+        <id column="news_id" property="newsId"/>
+        <result column="title" property="title"/>
+        <result column="news_source" property="newsSource"/>
+        <result column="original_title" property="originalTitle"/>
+        <result column="content" property="content"/>
+        <result column="news_type" property="newsType"/>
+        <result column="version" property="version"/>
+        <result column="is_delete" property="isDelete"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_update" property="gmtUpdate"/>
     </resultMap>
 
+    <select id="selectPageVo" resultType="com.practice.ningbao.entity.news.NewsEntity">
+        SELECT *
+        FROM news
+        WHERE ((news_type = #{news_type})
+            or (#{news_type} is null))
+          and is_delete = 0
+    </select>
 </mapper>
