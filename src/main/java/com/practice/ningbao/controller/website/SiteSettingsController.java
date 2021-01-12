@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2021-01-08
  */
 @RestController
-@RequestMapping("/ningbao/site-settings")
+@RequestMapping("/site_settings")
 public class SiteSettingsController {
 
     //// TODO: 2021/1/11 修改网站设置

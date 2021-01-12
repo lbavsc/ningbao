@@ -3,7 +3,7 @@
 <mapper namespace="com.practice.ningbao.mapper.website.PartnerMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.website.Partner">
+    <resultMap id="BaseResultMap" type="com.practice.ningbao.entity.website.PartnerEntity">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="img" property="img" />

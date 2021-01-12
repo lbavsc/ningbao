@@ -118,11 +118,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
 
     @Override
     public boolean isAdmin(String token) {
-        tokenService.isExprie(String.valueOf(tokenService.queryByToken(token).getUserId()));
+
         TokenEntity tokenEntity = tokenService.queryByToken(token);
         if (tokenEntity == null) {
             return false;
         }
+        tokenService.isExprie(String.valueOf(tokenService.queryByToken(token).getUserId()));
         return baseMapper.selectById(tokenEntity.getUserId()).getUserType() == 0;
     }
 

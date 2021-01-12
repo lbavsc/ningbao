@@ -42,7 +42,7 @@ public class CompanyOverviewDirectoryController {
 
 
     @ApiOperation("增加公司2级目录")
-    @GetMapping("/add")
+    @PostMapping("/add")
     public ResultEntity addDir(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                @ApiParam("目录名") @RequestBody CompanyOverviewDirectoryEntity companyOverviewDirectoryEntity) {
         try {
@@ -59,7 +59,7 @@ public class CompanyOverviewDirectoryController {
 
     //// TODO: 2021/1/11 删除目录
     @ApiOperation("删除公司2级目录")
-    @GetMapping("/delete")
+    @PostMapping("/delete")
     public ResultEntity deleteDir(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                @ApiParam("目录名") @RequestBody CompanyOverviewDirectoryEntity companyOverviewDirectoryEntity) {
         try {
@@ -74,7 +74,7 @@ public class CompanyOverviewDirectoryController {
     }
 
     @ApiOperation("修改公司2级目录")
-    @GetMapping("/modify")
+    @PostMapping("/modify")
     public ResultEntity modifyDir(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                @ApiParam("目录名") @RequestBody CompanyOverviewDirectoryEntity companyOverviewDirectoryEntity) {
         try {
@@ -87,7 +87,5 @@ public class CompanyOverviewDirectoryController {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }
     }
-
-
 }
 

@@ -1,6 +1,6 @@
 package com.practice.ningbao.service.news;
 
-import com.practice.ningbao.entity.news.NewsDirectory;
+import com.practice.ningbao.entity.news.NewsDirectoryEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author lbavsc
  * @since 2021-01-12
  */
-public interface NewsDirectoryService extends IService<NewsDirectory> {
+public interface NewsDirectoryService extends IService<NewsDirectoryEntity> {
 
 }

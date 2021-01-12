@@ -1,7 +1,8 @@
 package com.practice.ningbao.mapper.website;
 
-import com.practice.ningbao.entity.website.Partner;
+import com.practice.ningbao.entity.website.PartnerEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author lbavsc
  * @since 2021-01-12
  */
-public interface PartnerMapper extends BaseMapper<Partner> {
+@Mapper
+public interface PartnerMapper extends BaseMapper<PartnerEntity> {
 
 }
