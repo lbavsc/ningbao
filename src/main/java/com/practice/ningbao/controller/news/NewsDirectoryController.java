@@ -30,7 +30,7 @@ public class NewsDirectoryController {
     @Autowired
     NewsDirectoryService newsDirectoryService;
 
-    @ApiOperation("公司概况2级目录")
+    @ApiOperation("新闻2级目录")
     @GetMapping("/get")
     public ResultEntity getDir() {
         try {
@@ -41,7 +41,7 @@ public class NewsDirectoryController {
     }
 
 
-    @ApiOperation("增加公司2级目录")
+    @ApiOperation("增加新闻2级目录")
     @PostMapping("/add")
     public ResultEntity addDir(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                @ApiParam("目录名") @RequestBody NewsDirectoryEntity newsDirectoryEntity) {
@@ -58,7 +58,7 @@ public class NewsDirectoryController {
 
 
     //// TODO: 2021/1/11 删除目录
-    @ApiOperation("删除公司2级目录")
+    @ApiOperation("删除新闻2级目录")
     @PostMapping("/delete")
     public ResultEntity deleteDir(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                   @ApiParam("目录名") @RequestBody NewsDirectoryEntity newsDirectoryEntity) {
@@ -73,7 +73,7 @@ public class NewsDirectoryController {
         }
     }
 
-    @ApiOperation("修改公司2级目录")
+    @ApiOperation("修改新闻2级目录")
     @PostMapping("/modify")
     public ResultEntity modifyDir(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                   @ApiParam("目录名") @RequestBody NewsDirectoryEntity newsDirectoryEntity) {

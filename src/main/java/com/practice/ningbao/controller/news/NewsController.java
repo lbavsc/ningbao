@@ -39,7 +39,7 @@ public class NewsController {
     //// TODO: 2021/1/11 查询新闻列表
     @ApiOperation("查询新闻列表")
     @GetMapping("/list")
-    public ResultEntity ListNews(@ApiParam("查询的页数") @RequestParam(required = false) Integer current,
+    public ResultEntity     listNews(@ApiParam("查询的页数") @RequestParam(required = false) Integer current,
                                  @ApiParam("一页的数量") @RequestParam(required = false) Integer size,
                                  @ApiParam("用户类型") @RequestParam(required = false) Integer newsType) {
         try {
@@ -62,7 +62,7 @@ public class NewsController {
 
     @ApiOperation("查询单条新闻")
     @GetMapping("/get")
-    public ResultEntity getNews(@ApiParam("查询的页数") @RequestParam(required = false) Integer newsId) {
+    public ResultEntity getNews(@ApiParam("查询的新闻ID") @RequestParam(required = false) Integer newsId) {
         try {
 
             return ResultUtil.success(newsService.getById(newsId));
@@ -87,8 +87,6 @@ public class NewsController {
         }
     }
 
-
-    //// TODO: 2021/1/11 删除新闻
     @ApiOperation("删除新闻")
     @PostMapping("/delete")
     public ResultEntity deteleNews(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,

@@ -34,7 +34,7 @@ public class ProductIntroductionContentController {
 
 
     //// TODO: 2021/1/11 获取对应目录内容
-    @ApiOperation("获取对应目录内容")
+    @ApiOperation("获取产品介绍对应目录内容")
     @GetMapping("/get")
     public ResultEntity getContent(@ApiParam("目录ID") @RequestParam(required = false, defaultValue = "0") Integer dirId) {
         try {
@@ -46,7 +46,7 @@ public class ProductIntroductionContentController {
 
 
     //// TODO: 2021/1/11 修改内容
-    @ApiOperation("修改对应目录内容")
+    @ApiOperation("修改产品介绍对应目录内容")
     @PostMapping("/modify")
     public ResultEntity modifyContent(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                       @ApiParam("内容对象") @RequestBody ProductIntroductionContentEntity productIntroductionContentEntity) {

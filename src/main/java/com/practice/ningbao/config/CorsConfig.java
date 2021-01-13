@@ -21,6 +21,7 @@ public class CorsConfig {
         corsConfiguration.addAllowedOrigin("http://localhost:8080");
         corsConfiguration.addAllowedOrigin("http://localhost:9529");
         corsConfiguration.addAllowedOrigin("http://localhost:9528");
+        corsConfiguration.addAllowedOrigin("http://192.168.2.226:8080");
         // 允许任何头
         corsConfiguration.addAllowedHeader("*");
         // 允许任何方法（post、get等）

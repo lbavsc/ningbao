@@ -32,7 +32,7 @@ public class ProductIntroductionDirectoryController {
     @Autowired
     ProductIntroductionDirectoryService companyOverviewDirectoryService;
 
-    @ApiOperation("公司概况2级目录")
+    @ApiOperation("获得产品介绍2级目录")
     @GetMapping("/get")
     public ResultEntity getDir() {
         try {
@@ -43,7 +43,7 @@ public class ProductIntroductionDirectoryController {
     }
 
 
-    @ApiOperation("增加公司2级目录")
+    @ApiOperation("增加产品介绍2级目录")
     @PostMapping("/add")
     public ResultEntity addDir(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                @ApiParam("目录名") @RequestBody ProductIntroductionDirectoryEntity productIntroductionDirectoryEntity) {
@@ -60,7 +60,7 @@ public class ProductIntroductionDirectoryController {
 
 
     //// TODO: 2021/1/11 删除目录
-    @ApiOperation("删除公司2级目录")
+    @ApiOperation("删除产品介绍2级目录")
     @PostMapping("/delete")
     public ResultEntity deleteDir(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                   @ApiParam("目录名") @RequestBody ProductIntroductionDirectoryEntity productIntroductionDirectoryEntity) {
@@ -75,7 +75,7 @@ public class ProductIntroductionDirectoryController {
         }
     }
 
-    @ApiOperation("修改公司2级目录")
+    @ApiOperation("修改产品介绍2级目录")
     @PostMapping("/modify")
     public ResultEntity modifyDir(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                   @ApiParam("目录名") @RequestBody ProductIntroductionDirectoryEntity productIntroductionDirectoryEntity) {

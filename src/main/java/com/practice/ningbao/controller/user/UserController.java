@@ -316,6 +316,7 @@ public class UserController {
      * @param request
      * @param response
      */
+    @ApiOperation("获取验证码")
     @GetMapping("verification_code")
     public void getVerficationCode(HttpServletRequest request, HttpServletResponse response) {
         try {

@@ -39,7 +39,7 @@ public class NewsLeaderboardController {
     @Autowired
     NewsService newsService;
 
-    @ApiOperation("获得轮播排行榜")
+    @ApiOperation("获得排行榜")
     @GetMapping("/get")
     public ResultEntity getCarouselNews() {
         try {
@@ -52,7 +52,7 @@ public class NewsLeaderboardController {
 
     }
 
-    @ApiOperation("删除轮播新闻")
+    @ApiOperation("删除排行榜新闻")
     @PostMapping("/delete")
     public ResultEntity deleteCarouselNews(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                            @ApiParam("新闻") @RequestBody NewsLeaderboardEntity newsLeaderboardEntity) {
@@ -68,7 +68,7 @@ public class NewsLeaderboardController {
 
     }
 
-    @ApiOperation("新增轮播新闻")
+    @ApiOperation("新增排行榜新闻")
     @PostMapping("/add")
     public ResultEntity addCarouselNews(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                         @ApiParam("新闻") @RequestBody NewsLeaderboardEntity newsLeaderboardEntity) {

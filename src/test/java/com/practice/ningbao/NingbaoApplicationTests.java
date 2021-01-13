@@ -21,14 +21,14 @@ class NingbaoApplicationTests {
     TokenService tokenService;
     @Autowired
     UserService userService;
-    @Test
-    void contextLoads() throws SQLException {
-        LoginFormVo userInfo = new LoginFormVo();
-        userInfo.setId("10151");
-
-        userService.userVerification(userInfo);
-
-    }
+//    @Test
+//    void contextLoads() throws SQLException {
+//        LoginFormVo userInfo = new LoginFormVo();
+//        userInfo.setId("10151");
+//
+//        userService.userVerification(userInfo);
+//
+//    }
 
     @Test
     void addUser()throws SQLException {

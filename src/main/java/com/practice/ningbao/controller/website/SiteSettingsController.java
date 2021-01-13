@@ -52,6 +52,7 @@ public class SiteSettingsController {
             if (!userService.isAdmin(token)) {
                 return ResultUtil.error("1002", "您不是管理员");
             }
+            System.out.println(siteSettingsEntity);
 
             siteSettingsEntity.setId(0);
             siteSettingsService.updateById(siteSettingsEntity);

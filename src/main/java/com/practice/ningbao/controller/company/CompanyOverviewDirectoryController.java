@@ -30,7 +30,7 @@ public class CompanyOverviewDirectoryController {
     @Autowired
     CompanyOverviewDirectoryService companyOverviewDirectoryService;
 
-    @ApiOperation("公司概况2级目录")
+    @ApiOperation("获得公司概况2级目录")
     @GetMapping("/get")
     public ResultEntity getDir() {
         try {
