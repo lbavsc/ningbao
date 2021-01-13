@@ -33,10 +33,20 @@ public class SiteSettingsController {
     @Autowired
     SiteSettingsService siteSettingsService;
 
-    //// TODO: 2021/1/11 修改网站设置
-    @ApiOperation("修改轮播图")
+    @ApiOperation("查询系统设置")
+    @GetMapping("/get")
+    public ResultEntity getSiteSettings() {
+        try {
+
+            return ResultUtil.success(siteSettingsService.getById(0));
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统发生错误,请联系管理员");
+        }
+    }
+
+    @ApiOperation("修改系统设置")
     @PostMapping("/modify")
-    public ResultEntity modifyCarouselPic(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
+    public ResultEntity modifySiteSettings(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                           @ApiParam("图片") @RequestBody SiteSettingsEntity siteSettingsEntity) {
         try {
             if (!userService.isAdmin(token)) {

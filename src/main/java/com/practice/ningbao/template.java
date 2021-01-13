@@ -27,6 +27,7 @@ public class template {
         gc.setOpen(false);
         gc.setFileOverride(true);
         gc.setServiceName("%sService");
+        gc.setEntityName("%sEntity");
         gc.setIdType(IdType.ID_WORKER);
         gc.setAuthor("lbavsc");
         gc.setDateType(DateType.ONLY_DATE);
@@ -57,7 +58,7 @@ public class template {
 //        st.setInclude("carousel_news", "carousel_pic", "company_overview_content", "company_overview_directory",
 //                 "conntact_us", "news", "news_leaderboard", "novice_guide", "product_introduction_content",
 //                "product_introduction_directory", "recruitment", "site_settings", "token", "user");
-        st.setInclude("news_directory", "partner");
+        st.setInclude("home_product_introduction");
         st.setNaming(NamingStrategy.underline_to_camel);
         st.setColumnNaming(NamingStrategy.underline_to_camel);
         st.setEntityLombokModel(true);

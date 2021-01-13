@@ -63,6 +63,10 @@ public class ConntactUsEntity implements Serializable {
     @TableField("weibo")
     private String weibo;
 
+    @ApiModelProperty(value = "地图")
+    @TableField("img")
+    private String img;
+
     @ApiModelProperty(value = "乐观锁")
     @TableField("version")
     @Version

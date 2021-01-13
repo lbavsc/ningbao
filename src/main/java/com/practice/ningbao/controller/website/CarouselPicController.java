@@ -42,7 +42,6 @@ public class CarouselPicController {
 
     }
 
-    //// TODO: 2021/1/11 修改轮播图
     @ApiOperation("修改轮播图")
     @PostMapping("/modify")
     public ResultEntity modifyCarouselPic(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,

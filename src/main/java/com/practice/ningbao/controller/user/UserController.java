@@ -25,6 +25,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.constraints.NotNull;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>
@@ -140,6 +142,7 @@ public class UserController {
                 return ResultUtil.error("1001", "帐号被封禁中");
             }
             UserInfoVo userInfo = userService.info(Integer.valueOf(loginForm.getId()));
+            System.out.println(userInfo);
             return ResultUtil.success(userInfo);
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
@@ -278,7 +281,7 @@ public class UserController {
 
     @ApiOperation("用户列表")
     @GetMapping("/admin/list_user")
-    public ResultEntity ListUser(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
+    public ResultEntity listUser(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                  @ApiParam("查询的页数") @RequestParam(required = false) Integer current,
                                  @ApiParam("一页的数量") @RequestParam(required = false) Integer size,
                                  @ApiParam("用户类型") @RequestParam(required = false) Integer state) {
@@ -297,7 +300,10 @@ public class UserController {
             if (userEntityIpage.getTotal() == 0) {
                 return ResultUtil.error("1004", "没有相关的数据");
             }
-            return ResultUtil.success(userEntityIpage.getRecords());
+//            Map<Object, Object> map = new HashMap<>();
+//            map.put("pages", userEntityIpage.getPages());
+//            map.put("quantity", userEntityIpage.getRecords().size());
+            return ResultUtil.success(userEntityIpage.getRecords()) ;
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }

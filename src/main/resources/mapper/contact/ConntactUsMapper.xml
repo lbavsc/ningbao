@@ -13,6 +13,7 @@
         <result column="mailbox" property="mailbox" />
         <result column="wechat" property="wechat" />
         <result column="weibo" property="weibo" />
+        <result column="img" property="img" />
         <result column="version" property="version" />
         <result column="is_delete" property="isDelete" />
         <result column="gmt_create" property="gmtCreate" />

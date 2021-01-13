@@ -39,6 +39,10 @@ public class SiteSettingsEntity implements Serializable {
     @TableField("site_logo")
     private String siteLogo;
 
+    @ApiModelProperty(value = "网站底部logo")
+    @TableField("button_logo")
+    private String buttonLogo;
+
     @ApiModelProperty(value = "网站slogan")
     @TableField("site_slogan")
     private String siteSlogan;

@@ -58,11 +58,21 @@ public class NewsController {
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }
+    }
 
+    @ApiOperation("查询单条新闻")
+    @GetMapping("/get")
+    public ResultEntity getNews(@ApiParam("查询的页数") @RequestParam(required = false) Integer newsId) {
+        try {
+
+            return ResultUtil.success(newsService.getById(newsId));
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统发生错误,请联系管理员");
+        }
     }
 
 
-    @ApiOperation("新增新闻")
+    @ApiOperation("新增或修改新闻")
     @PostMapping("/add_or_modify")
     public ResultEntity addNews(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                 @ApiParam("目录名") @RequestBody NewsEntity newsEntity) {
@@ -79,10 +89,10 @@ public class NewsController {
 
 
     //// TODO: 2021/1/11 删除新闻
-    @ApiOperation("新增新闻")
+    @ApiOperation("删除新闻")
     @PostMapping("/delete")
     public ResultEntity deteleNews(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
-                                @ApiParam("目录名") @RequestBody NewsEntity newsEntity) {
+                                   @ApiParam("目录名") @RequestBody NewsEntity newsEntity) {
         try {
             if (!userService.isAdmin(token)) {
                 return ResultUtil.error("1002", "您不是管理员");

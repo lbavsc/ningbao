@@ -44,6 +44,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
         //验证码验证后进行失效处理
 //        session.removeAttribute(ValidateCodeUtil.SESSION_KEY);
         return !"".equals(sessionCode) && !"".equals(receivedCode) && sessionCode.equals(receivedCode);
+//        return true;
     }
 
     @Override

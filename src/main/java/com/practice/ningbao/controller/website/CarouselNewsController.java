@@ -50,7 +50,7 @@ public class CarouselNewsController {
     }
 
     @ApiOperation("删除轮播新闻")
-    @GetMapping("/delete")
+    @PostMapping("/delete")
     public ResultEntity deleteCarouselNews(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                            @ApiParam("新闻") @RequestBody CarouselNewsEntity carouselNewsEntity) {
         try {
@@ -66,7 +66,7 @@ public class CarouselNewsController {
     }
 
     @ApiOperation("新增轮播新闻")
-    @GetMapping("/add")
+    @PostMapping("/add")
     public ResultEntity addCarouselNews(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                            @ApiParam("新闻") @RequestBody CarouselNewsEntity carouselNewsEntity) {
         try {
