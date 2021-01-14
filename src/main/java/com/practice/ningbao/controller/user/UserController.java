@@ -235,13 +235,14 @@ public class UserController {
     public ResultEntity userDelete(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                    @ApiParam("封禁用户名") @RequestBody UserEntity userEntity) {
         try {
+
             if (!userService.isAdmin(token)) {
                 return ResultUtil.error("1001", "您不是管理员");
             }
             if (!userService.deleteUser(userEntity, token)) {
                 return ResultUtil.error("1001", "不能删除自己");
             }
-            return ResultUtil.success("删除" + userEntity.getName() + "用户成功");
+            return ResultUtil.success("删除" + userEntity.getId() + "用户成功");
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }
@@ -303,7 +304,7 @@ public class UserController {
 //            Map<Object, Object> map = new HashMap<>();
 //            map.put("pages", userEntityIpage.getPages());
 //            map.put("quantity", userEntityIpage.getRecords().size());
-            return ResultUtil.success(userEntityIpage.getRecords()) ;
+            return ResultUtil.success(userEntityIpage.getRecords());
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }

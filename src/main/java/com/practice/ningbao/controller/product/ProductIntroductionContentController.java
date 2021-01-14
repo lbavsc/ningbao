@@ -38,7 +38,7 @@ public class ProductIntroductionContentController {
     @GetMapping("/get")
     public ResultEntity getContent(@ApiParam("目录ID") @RequestParam(required = false, defaultValue = "0") Integer dirId) {
         try {
-            return ResultUtil.success(productIntroductionContentService.getById(dirId));
+            return ResultUtil.success(productIntroductionContentService.list());
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }

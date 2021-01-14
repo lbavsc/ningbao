@@ -50,20 +50,35 @@ public class NoviceGuideController {
     }
 
 
+//    @ApiOperation("修改新手指引")
+//    @PostMapping("/modify")
+//    public ResultEntity modifyNoviceGuide(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
+//                                          @ApiParam("图片") @RequestParam(value = "img", required = false) MultipartFile img,
+//                                          @ApiParam("内容") @RequestParam(required = false) String content) {
+//            try {
+//                if (!userService.isAdmin(token)) {
+//                    return ResultUtil.error("1002", "您不是管理员");
+//                }
+//                noviceGuideService.saveOrUpdateNoviceGuide(img, content);
+//                return ResultUtil.success();
+//            } catch (Exception e) {
+//                return ResultUtil.error("1002", "系统发生错误,请联系管理员");
+//            }
+//    }
+
     @ApiOperation("修改新手指引")
     @PostMapping("/modify")
     public ResultEntity modifyNoviceGuide(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
-                                          @ApiParam("图片") @RequestParam(value = "img", required = false) MultipartFile img,
-                                          @ApiParam("内容") @RequestParam(required = false) String content) {
-            try {
-                if (!userService.isAdmin(token)) {
-                    return ResultUtil.error("1002", "您不是管理员");
-                }
-                noviceGuideService.saveOrUpdateNoviceGuide(img, content);
-                return ResultUtil.success();
-            } catch (Exception e) {
-                return ResultUtil.error("1002", "系统发生错误,请联系管理员");
+                                          @ApiParam("图片") @RequestBody NoviceGuideEntity noviceGuideEntity) {
+        try {
+            if (!userService.isAdmin(token)) {
+                return ResultUtil.error("1002", "您不是管理员");
             }
+            noviceGuideService.updateById(noviceGuideEntity);
+            return ResultUtil.success();
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统发生错误,请联系管理员");
+        }
     }
 }
 

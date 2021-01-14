@@ -27,7 +27,8 @@ import lombok.experimental.Accessors;
 @TableName("user")
 public class UserEntity implements Serializable {
 
-    private static final long serialVersionUID=1L;
+
+    private static final long serialVersionUID = -559455084034443834L;
 
     @ApiModelProperty(value = "用户ID")
     @TableId(value = "id", type = IdType.AUTO)

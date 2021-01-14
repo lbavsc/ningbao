@@ -106,6 +106,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
         // 不能删除自己
         if (id != userEntity.getId()) {
             baseMapper.deleteById(userEntity.getId());
+            if (tokenService.getById(userEntity.getId()) != null) {
+                tokenService.removeById(userEntity.getId());
+            }
+
             return true;
         }
         return false;

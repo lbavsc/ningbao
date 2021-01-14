@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.*;
 
 import java.util.Date;
 import java.io.Serializable;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -12,7 +13,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author lbavsc
@@ -21,12 +22,12 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Token对象", description="")
+@ApiModel(value = "Token对象", description = "")
 @TableName("token")
 public class TokenEntity implements Serializable {
 
-    private static final long serialVersionUID=1L;
 
+    private static final long serialVersionUID = 2734703807289200522L;
     @ApiModelProperty(value = "用户ID")
     @TableId(value = "user_id", type = IdType.ID_WORKER)
     private Integer userId;
