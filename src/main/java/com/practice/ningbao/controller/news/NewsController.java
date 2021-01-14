@@ -64,7 +64,7 @@ public class NewsController {
 
     @ApiOperation("查询单条新闻")
     @GetMapping("/get")
-    public ResultEntity getNews(@ApiParam("查询的新闻ID") @RequestParam(required = false,defaultValue = "1") Integer newsId) {
+    public ResultEntity getNews(@ApiParam("查询的新闻ID") @RequestParam(required = false, defaultValue = "1") Integer newsId) {
         try {
             return ResultUtil.success(newsService.getById(newsId));
         } catch (Exception e) {

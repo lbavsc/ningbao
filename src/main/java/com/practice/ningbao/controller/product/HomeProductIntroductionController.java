@@ -74,7 +74,7 @@ public class HomeProductIntroductionController {
     }
 
     @ApiOperation("修改对应目录内容")
-    @GetMapping("/modify")
+    @PostMapping("/modify")
     public ResultEntity modifyHomeProductIntroduction(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
                                                       @ApiParam("内容对象") @RequestBody HomeProductIntroductionEntity homeProductIntroductionEntity) {
         try {

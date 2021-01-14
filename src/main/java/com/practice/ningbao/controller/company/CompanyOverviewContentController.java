@@ -75,7 +75,5 @@ public class CompanyOverviewContentController {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }
     }
-
-
 }
 

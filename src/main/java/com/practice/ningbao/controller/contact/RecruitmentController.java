@@ -55,6 +55,19 @@ public class RecruitmentController {
         }
     }
 
+
+    @ApiOperation("获得招聘公告列表")
+    @GetMapping("/get")
+    public ResultEntity getInfo(@ApiParam("查询的页数") @RequestParam(required = false, defaultValue = "1") Integer recruitmentId) {
+        try {
+
+
+            return ResultUtil.success(recruitmentService.getById(recruitmentId));
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统出现错误,请联系管理员");
+        }
+    }
+
     @ApiOperation("新增招聘公告")
     @PostMapping("/add")
     public ResultEntity addRecruitment(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
