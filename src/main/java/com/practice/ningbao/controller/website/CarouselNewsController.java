@@ -72,6 +72,9 @@ public class CarouselNewsController {
             if (!userService.isAdmin(token)) {
                 return ResultUtil.error("1002", "您不是管理员");
             }
+            if (newsService.getById(carouselNewsEntity.getNewsId()) == null) {
+                return ResultUtil.error("1003", "系统中没有此条新闻");
+            }
             carouselNewsService.save(carouselNewsEntity);
             return ResultUtil.success();
         } catch (Exception e) {

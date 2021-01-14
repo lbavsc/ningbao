@@ -75,6 +75,9 @@ public class NewsLeaderboardController {
             if (!userService.isAdmin(token)) {
                 return ResultUtil.error("1002", "您不是管理员");
             }
+            if (newsService.getById(newsLeaderboardEntity.getNewsId()) == null) {
+                return ResultUtil.error("1003", "系统中没有此条新闻");
+            }
             newsLeaderboardService.save(newsLeaderboardEntity);
             return ResultUtil.success();
         } catch (Exception e) {
