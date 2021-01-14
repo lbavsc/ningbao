@@ -39,9 +39,9 @@ public class NewsEntity implements Serializable {
     @TableField("title")
     private String title;
 
-    @ApiModelProperty(value = "新闻原标题")
-    @TableField("original_title")
-    private String originalTitle;
+//    @ApiModelProperty(value = "新闻原标题")
+//    @TableField("original_title")
+//    private String originalTitle;
 
     @ApiModelProperty(value = "新闻内容")
     @TableField("content")

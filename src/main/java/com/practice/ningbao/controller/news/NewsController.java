@@ -64,9 +64,8 @@ public class NewsController {
 
     @ApiOperation("查询单条新闻")
     @GetMapping("/get")
-    public ResultEntity getNews(@ApiParam("查询的新闻ID") @RequestParam(required = false) Integer newsId) {
+    public ResultEntity getNews(@ApiParam("查询的新闻ID") @RequestParam(required = false,defaultValue = "1") Integer newsId) {
         try {
-
             return ResultUtil.success(newsService.getById(newsId));
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
