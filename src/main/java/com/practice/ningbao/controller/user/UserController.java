@@ -239,6 +239,9 @@ public class UserController {
             if (!userService.isAdmin(token)) {
                 return ResultUtil.error("1001", "您不是管理员");
             }
+            if (userEntity.getId()==null){
+                return ResultUtil.error("1002","您未输入需要删除的用户ID");
+            }
             if (!userService.deleteUser(userEntity, token)) {
                 return ResultUtil.error("1001", "不能删除自己");
             }
