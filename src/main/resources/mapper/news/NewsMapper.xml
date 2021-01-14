@@ -16,7 +16,7 @@
         <result column="gmt_update" property="gmtUpdate"/>
     </resultMap>
 
-    <select id="selectPageVo" resultType="com.practice.ningbao.entity.news.NewsEntity">
+    <select id="selectPageVo" resultType="com.practice.ningbao.vo.NewsVo">
         SELECT *
         FROM news
         WHERE ((news_type = #{news_type})

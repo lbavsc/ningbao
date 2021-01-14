@@ -196,6 +196,7 @@ public class UserController {
             if (!userService.isAdmin(token)) {
                 return ResultUtil.error("1001", "您不是管理员");
             }
+            System.out.println(userEntity);
             userEntity.setPassword(DigestUtils.md5DigestAsHex(userEntity.getPassword().getBytes()));
             userService.save(userEntity);
 

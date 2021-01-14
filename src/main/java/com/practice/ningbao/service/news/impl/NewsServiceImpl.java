@@ -6,6 +6,7 @@ import com.practice.ningbao.entity.news.NewsEntity;
 import com.practice.ningbao.mapper.news.NewsMapper;
 import com.practice.ningbao.service.news.NewsService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.practice.ningbao.vo.NewsVo;
 import org.springframework.stereotype.Service;
 
 /**
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Service;
 public class NewsServiceImpl extends ServiceImpl<NewsMapper, NewsEntity> implements NewsService {
 
     @Override
-    public IPage<NewsEntity> selectNewsPage(Page<NewsEntity> page, Integer newsType) {
+    public IPage<NewsVo> selectNewsPage(Page<NewsVo> page, Integer newsType) {
         return baseMapper.selectPageVo(page, newsType);
     }
 }

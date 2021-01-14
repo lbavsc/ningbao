@@ -21,6 +21,7 @@
         WHERE ((user_status = #{state})
             or (#{state} is null))
           and is_delete = 0
+        order by id desc
     </select>
 
 </mapper>

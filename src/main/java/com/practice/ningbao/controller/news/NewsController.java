@@ -10,6 +10,7 @@ import com.practice.ningbao.service.news.NewsService;
 import com.practice.ningbao.service.user.UserService;
 import com.practice.ningbao.util.ResultUtil;
 import com.practice.ningbao.vo.MyPageVo;
+import com.practice.ningbao.vo.NewsVo;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class NewsController {
     //// TODO: 2021/1/11 查询新闻列表
     @ApiOperation("查询新闻列表")
     @GetMapping("/list")
-    public ResultEntity     listNews(@ApiParam("查询的页数") @RequestParam(required = false) Integer current,
+    public ResultEntity listNews(@ApiParam("查询的页数") @RequestParam(required = false) Integer current,
                                  @ApiParam("一页的数量") @RequestParam(required = false) Integer size,
                                  @ApiParam("用户类型") @RequestParam(required = false) Integer newsType) {
         try {
@@ -49,11 +50,12 @@ public class NewsController {
             if (size == null) {
                 size = 10;
             }
-            MyPageVo<NewsEntity> myPage = new MyPageVo<>(current, size);
-            IPage<NewsEntity> newsEntityIpage = newsService.selectNewsPage(myPage, newsType);
+            MyPageVo<NewsVo> myPage = new MyPageVo<>(current, size);
+            IPage<NewsVo> newsEntityIpage = newsService.selectNewsPage(myPage, newsType);
             if (newsEntityIpage.getTotal() == 0) {
                 return ResultUtil.error("1004", "没有相关的数据");
             }
+            newsEntityIpage.getRecords().forEach(e -> e.setPages(newsEntityIpage.getPages()));
             return ResultUtil.success(newsEntityIpage.getRecords());
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");

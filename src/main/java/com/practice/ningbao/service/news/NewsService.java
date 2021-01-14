@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.practice.ningbao.entity.news.NewsEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.practice.ningbao.entity.user.UserEntity;
+import com.practice.ningbao.vo.NewsVo;
 
 /**
  * <p>
@@ -15,5 +16,5 @@ import com.practice.ningbao.entity.user.UserEntity;
  * @since 2021-01-08
  */
 public interface NewsService extends IService<NewsEntity> {
-    public IPage<NewsEntity> selectNewsPage(Page<NewsEntity> page, Integer newsType);
+    public IPage<NewsVo> selectNewsPage(Page<NewsVo> page, Integer newsType);
 }
