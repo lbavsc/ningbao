@@ -15,7 +15,7 @@
         <result column="gmt_update" property="gmtUpdate"/>
     </resultMap>
 
-    <select id="selectPageVo" resultType="com.practice.ningbao.entity.user.UserEntity">
+    <select id="selectPageVo" resultType="com.practice.ningbao.vo.UserVo">
         SELECT *
         FROM user
         WHERE ((user_status = #{state})

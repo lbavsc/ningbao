@@ -6,6 +6,7 @@ import com.practice.ningbao.service.user.TokenService;
 import com.practice.ningbao.service.user.UserService;
 import com.practice.ningbao.vo.LoginFormVo;
 import com.practice.ningbao.vo.MyPageVo;
+import com.practice.ningbao.vo.UserVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -44,11 +45,11 @@ class NingbaoApplicationTests {
 
     @Test
     void listUser()throws SQLException {
-        MyPageVo<UserEntity> page = new MyPageVo<>(1,120);
-        final IPage<UserEntity> userEntityIPage = userService.selectUserPage(page, null);
+        MyPageVo<UserVo> page = new MyPageVo<>(1,120);
+        final IPage<UserVo> userEntityIPage = userService.selectUserPage(page, null);
         System.out.println(userEntityIPage.getPages());
         System.out.println(userEntityIPage.getTotal());
-        List<UserEntity> userEntities = userEntityIPage.getRecords();
+        List<UserVo> userEntities = userEntityIPage.getRecords();
         userEntities.forEach(System.out::println);
 
     }

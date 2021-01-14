@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.practice.ningbao.entity.user.UserEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.practice.ningbao.vo.UserVo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -26,5 +27,5 @@ public interface UserMapper extends BaseMapper<UserEntity> {
      * @param state 状态
      * @return 分页对象
      */
-    IPage<UserEntity> selectPageVo(Page<?> page, Integer state);
+    IPage<UserVo> selectPageVo(Page<?> page, Integer state);
 }

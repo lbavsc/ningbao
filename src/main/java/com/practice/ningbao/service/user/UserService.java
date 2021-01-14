@@ -6,6 +6,7 @@ import com.practice.ningbao.entity.user.UserEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.practice.ningbao.vo.LoginFormVo;
 import com.practice.ningbao.vo.UserInfoVo;
+import com.practice.ningbao.vo.UserVo;
 
 import javax.servlet.http.HttpSession;
 
@@ -39,5 +40,5 @@ public interface UserService extends IService<UserEntity> {
 
     public boolean deleteUser(UserEntity userEntity,  String token);
 
-    public IPage<UserEntity> selectUserPage(Page<UserEntity> page, Integer state);
+    public IPage<UserVo> selectUserPage(Page<UserVo> page, Integer state);
 }

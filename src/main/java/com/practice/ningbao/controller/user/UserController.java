@@ -14,6 +14,7 @@ import com.practice.ningbao.util.constant.UserConstant;
 import com.practice.ningbao.vo.LoginFormVo;
 import com.practice.ningbao.vo.MyPageVo;
 import com.practice.ningbao.vo.UserInfoVo;
+import com.practice.ningbao.vo.UserVo;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -300,11 +301,12 @@ public class UserController {
             if (size == null) {
                 size = 10;
             }
-            MyPageVo<UserEntity> myPage = new MyPageVo<>(current, size);
-            IPage<UserEntity> userEntityIpage = userService.selectUserPage(myPage, state);
+            MyPageVo<UserVo> myPage = new MyPageVo<>(current, size);
+            IPage<UserVo> userEntityIpage = userService.selectUserPage(myPage, state);
             if (userEntityIpage.getTotal() == 0) {
                 return ResultUtil.error("1004", "没有相关的数据");
             }
+            userEntityIpage.getRecords().forEach(e->e.setPages(userEntityIpage.getPages()));
 //            Map<Object, Object> map = new HashMap<>();
 //            map.put("pages", userEntityIpage.getPages());
 //            map.put("quantity", userEntityIpage.getRecords().size());

@@ -12,6 +12,7 @@ import com.practice.ningbao.util.constant.LoginConstant;
 import com.practice.ningbao.util.ValidateCodeUtil;
 import com.practice.ningbao.vo.LoginFormVo;
 import com.practice.ningbao.vo.UserInfoVo;
+import com.practice.ningbao.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -116,7 +117,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
     }
 
     @Override
-    public IPage<UserEntity> selectUserPage(Page<UserEntity> page, Integer state) {
+    public IPage<UserVo> selectUserPage(Page<UserVo> page, Integer state) {
         return baseMapper.selectPageVo(page, state);
     }
 
