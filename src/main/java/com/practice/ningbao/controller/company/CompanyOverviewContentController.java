@@ -1,6 +1,7 @@
 package com.practice.ningbao.controller.company;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.practice.ningbao.entity.ResultEntity;
 import com.practice.ningbao.entity.company.CompanyOverviewContentEntity;
 import com.practice.ningbao.entity.user.UserEntity;
@@ -14,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>
@@ -38,7 +41,21 @@ public class CompanyOverviewContentController {
     public ResultEntity getContent(@ApiParam("目录ID") @RequestParam(required = false, defaultValue = "0") Integer dirId) {
         try {
 
-            return ResultUtil.success(companyOverviewContentService.getById(dirId));
+            QueryWrapper<CompanyOverviewContentEntity> companyOverviewContentEntityQueryWrapper = new QueryWrapper<>();
+            Map<String, Integer> stringIntegerMap = new HashMap<>();
+            stringIntegerMap.put("owned_directory", dirId);
+            companyOverviewContentEntityQueryWrapper.allEq(stringIntegerMap);
+            return ResultUtil.success(companyOverviewContentService.getOne(companyOverviewContentEntityQueryWrapper));
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统发生错误,请联系管理员");
+        }
+    }
+
+    @ApiOperation("获取所有目录内容")
+    @GetMapping("/list")
+    public ResultEntity listContent() {
+        try {
+            return ResultUtil.success(companyOverviewContentService.list());
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }

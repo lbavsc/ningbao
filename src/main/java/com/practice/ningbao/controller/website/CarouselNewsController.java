@@ -36,13 +36,12 @@ public class CarouselNewsController {
 
     @Autowired
     NewsService newsService;
+
     @ApiOperation("获得轮播新闻")
     @GetMapping("/get")
     public ResultEntity getCarouselNews() {
         try {
-            List<Integer> list = new ArrayList<>();
-            carouselNewsService.list().forEach(e ->list.add(e.getNewsId()));
-            return ResultUtil.success(newsService.listByIds(list));
+            return ResultUtil.success(carouselNewsService.get());
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }
@@ -68,7 +67,7 @@ public class CarouselNewsController {
     @ApiOperation("新增轮播新闻")
     @PostMapping("/add")
     public ResultEntity addCarouselNews(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
-                                           @ApiParam("新闻") @RequestBody CarouselNewsEntity carouselNewsEntity) {
+                                        @ApiParam("新闻") @RequestBody CarouselNewsEntity carouselNewsEntity) {
         try {
             if (!userService.isAdmin(token)) {
                 return ResultUtil.error("1002", "您不是管理员");

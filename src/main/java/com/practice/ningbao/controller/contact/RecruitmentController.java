@@ -33,19 +33,23 @@ public class RecruitmentController {
     @Autowired
     RecruitmentService recruitmentService;
 
+
+    //// FIXME: 2021/1/14 分页获取有sql语句错误,暂时返回全部信息
     @ApiOperation("获得招聘公告列表")
     @GetMapping("/get_list")
     public ResultEntity ListInfo(@ApiParam("查询的页数") @RequestParam(required = false) Integer current) {
         try {
-            if (current == null) {
-                current = 1;
-            }
-            MyPageVo<RecruitmentEntity> myPage = new MyPageVo<>(current, 10);
-            IPage<RecruitmentEntity> recruitmentEntityIpage = recruitmentService.selectRecruitmentPage(myPage);
-            if (recruitmentEntityIpage.getTotal() == 0) {
-                return ResultUtil.error("1004", "暂时没有招聘公告");
-            }
-            return ResultUtil.success(recruitmentEntityIpage.getRecords());
+//            if (current == null) {
+//                current = 1;
+//            }
+//            MyPageVo<RecruitmentEntity> myPage = new MyPageVo<>(current, 10);
+//            IPage<RecruitmentEntity> recruitmentEntityIpage = recruitmentService.selectRecruitmentPage(myPage);
+//            if (recruitmentEntityIpage.getTotal() == 0) {
+//                return ResultUtil.error("1004", "暂时没有招聘公告");
+//            }
+//            return ResultUtil.success(recruitmentEntityIpage.getRecords());
+
+            return ResultUtil.success(recruitmentService.list());
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统出现错误,请联系管理员");
         }
@@ -103,12 +107,12 @@ public class RecruitmentController {
     @ApiOperation("删除招聘公告")
     @PostMapping("/delete")
     public ResultEntity deleteRecruitment(@ApiParam("当前操作用户token") @RequestHeader(required = false) @NotNull(message = "token不能为空") String token,
-                                          @ApiParam("联系我们bean") @RequestParam Integer id) {
+                                          @ApiParam("联系我们bean") @RequestBody RecruitmentEntity recruitmentEntity) {
         try {
             if (!userService.isAdmin(token)) {
                 return ResultUtil.error("1002", "您不是管理员");
             }
-            recruitmentService.deleteRecruitment(id);
+            recruitmentService.deleteRecruitment(recruitmentEntity.getRecruitmentId());
             return ResultUtil.success();
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");

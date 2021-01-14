@@ -1,6 +1,7 @@
 package com.practice.ningbao.controller.product;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.practice.ningbao.entity.ResultEntity;
 import com.practice.ningbao.entity.company.CompanyOverviewContentEntity;
 import com.practice.ningbao.entity.product.ProductIntroductionContentEntity;
@@ -13,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>
@@ -35,8 +38,22 @@ public class ProductIntroductionContentController {
 
     //// TODO: 2021/1/11 获取对应目录内容
     @ApiOperation("获取产品介绍对应目录内容")
-    @GetMapping("/get")
+    @GetMapping("/get_one")
     public ResultEntity getContent(@ApiParam("目录ID") @RequestParam(required = false, defaultValue = "0") Integer dirId) {
+        try {
+            QueryWrapper<ProductIntroductionContentEntity> productIntroductionContentEntityQueryWrapper = new QueryWrapper<>();
+            Map<String, Integer> stringIntegerMap = new HashMap<>();
+            stringIntegerMap.put("owned_directory", dirId);
+            productIntroductionContentEntityQueryWrapper.allEq(stringIntegerMap);
+            return ResultUtil.success(productIntroductionContentService.list(productIntroductionContentEntityQueryWrapper));
+        } catch (Exception e) {
+            return ResultUtil.error("1002", "系统发生错误,请联系管理员");
+        }
+    }
+
+    @ApiOperation("获取所有目录内容")
+    @GetMapping("/get")
+    public ResultEntity listContent() {
         try {
             return ResultUtil.success(productIntroductionContentService.list());
         } catch (Exception e) {

@@ -2,11 +2,14 @@ package com.practice.ningbao.mapper.news;
 
 import com.practice.ningbao.entity.news.NewsLeaderboardEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.practice.ningbao.vo.NewsLeaderboardVo;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author lbavsc
@@ -14,5 +17,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface NewsLeaderboardMapper extends BaseMapper<NewsLeaderboardEntity> {
-
+    public List<NewsLeaderboardVo> getVo();
 }

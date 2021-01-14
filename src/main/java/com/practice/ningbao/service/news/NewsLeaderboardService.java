@@ -2,10 +2,13 @@ package com.practice.ningbao.service.news;
 
 import com.practice.ningbao.entity.news.NewsLeaderboardEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.practice.ningbao.vo.NewsLeaderboardVo;
+
+import java.util.List;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author lbavsc
@@ -13,4 +16,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface NewsLeaderboardService extends IService<NewsLeaderboardEntity> {
 
+    List<NewsLeaderboardVo> get();
 }

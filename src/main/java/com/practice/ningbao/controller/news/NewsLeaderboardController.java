@@ -1,6 +1,7 @@
 package com.practice.ningbao.controller.news;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.practice.ningbao.entity.ResultEntity;
 import com.practice.ningbao.entity.news.NewsLeaderboardEntity;
 import com.practice.ningbao.entity.website.CarouselNewsEntity;
@@ -43,9 +44,7 @@ public class NewsLeaderboardController {
     @GetMapping("/get")
     public ResultEntity getCarouselNews() {
         try {
-            List<Integer>list = new ArrayList<>();
-            newsLeaderboardService.list().forEach(e ->list.add(e.getNewsId()));
-            return ResultUtil.success(newsService.listByIds(list));
+            return ResultUtil.success(newsLeaderboardService.get());
         } catch (Exception e) {
             return ResultUtil.error("1002", "系统发生错误,请联系管理员");
         }

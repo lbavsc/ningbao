@@ -8,4 +8,10 @@
         <result column="news_link" property="newsLink" />
     </resultMap>
 
+    <select id="getVo" resultType="com.practice.ningbao.vo.NewsLeaderboardVo">
+        select ns.news_id, ns.title
+        from news as ns
+                 inner join carousel_news as nl on ns.news_id = nl.news_id
+    </select>
+
 </mapper>

@@ -42,13 +42,13 @@ public class NewsController {
     @GetMapping("/list")
     public ResultEntity listNews(@ApiParam("查询的页数") @RequestParam(required = false) Integer current,
                                  @ApiParam("一页的数量") @RequestParam(required = false) Integer size,
-                                 @ApiParam("用户类型") @RequestParam(required = false) Integer newsType) {
+                                 @ApiParam("新闻类型") @RequestParam(required = false) Integer newsType) {
         try {
             if (current == null) {
                 current = 1;
             }
             if (size == null) {
-                size = 10;
+                size = 5;
             }
             MyPageVo<NewsVo> myPage = new MyPageVo<>(current, size);
             IPage<NewsVo> newsEntityIpage = newsService.selectNewsPage(myPage, newsType);

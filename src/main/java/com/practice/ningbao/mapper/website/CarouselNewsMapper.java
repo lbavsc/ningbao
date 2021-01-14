@@ -2,7 +2,10 @@ package com.practice.ningbao.mapper.website;
 
 import com.practice.ningbao.entity.website.CarouselNewsEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.practice.ningbao.vo.NewsLeaderboardVo;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,5 +17,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface CarouselNewsMapper extends BaseMapper<CarouselNewsEntity> {
-
+    public List<NewsLeaderboardVo> getVo();
 }
